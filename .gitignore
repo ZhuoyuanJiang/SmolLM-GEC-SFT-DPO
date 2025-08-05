@@ -1,0 +1,109 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Model checkpoints and weights (too large for Git)
+models/
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+checkpoint*/
+final_model/
+
+# Experiments - exclude large files but keep results
+experiments/*/checkpoint*/
+experiments/*/final_model/
+experiments/*/*.bin
+experiments/*/*.safetensors
+
+# Keep experiment results!
+!experiments/*/results.json
+!experiments/*/README.md
+
+# Artifacts - keep analysis results but not large datasets
+artifacts/preference_dataset/
+artifacts/*_dataset/
+
+# Keep final results and plots!
+!artifacts/experiment_results.csv
+!artifacts/summary_statistics.json
+!artifacts/*.png
+
+# Keep all JSON config and result files
+!**/*results*.json
+!**/*config*.json
+
+# Temporary and analysis files
+dpo_dataset_temp_18000_visualization.json
+analyze_dpo_lengths.py
+*_temp*
+*_test*
+*.tmp
+
+# HuggingFace cache
+.cache/
+huggingface/
+hf_cache/
+
+# Logs
+*.log
+logs/
+*.out
+*.err
+
+# Symlinks (since they point to /tmp5)
+# These are symlinks for running experiments, not for GitHub
+/experiments
+/models
+/artifacts
+
+# GitHub-ready directories (these WILL be uploaded)
+!github_experiments/
+!github_artifacts/
+!github_models/
+
+# Data files (can be large and regenerated)
+preference_dataset/
+*_dataset.json
+*_dataset/
+
+# BUT keep example configs if any
+!example_*.json
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+*_old*
+
+# Screen session files
+screenlog.*

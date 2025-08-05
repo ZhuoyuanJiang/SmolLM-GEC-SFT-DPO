@@ -1,4 +1,4 @@
-name: sft_dpo_env
+name: SmolLM_gec_project
 channels:
   - defaults
   - https://repo.anaconda.com/pkgs/main

@@ -1,8 +1,64 @@
 # SmolLM GEC Deployment Guide for Lab Server
 
+## 📁 Project Structure (After Deployment)
+
+**Home Directory** (`~/projects/SmolLM-GEC-SFT-DPO/`):
+```
+SmolLM-GEC-SFT-DPO/
+├── scripts/                    # Python training scripts
+├── configs/                    # Experiment configurations  
+├── experiments/ → /tmp5/zhuoyuan/smollm_experiments/experiments
+├── artifacts/   → /tmp5/zhuoyuan/smollm_experiments/artifacts
+├── models/      → /tmp5/zhuoyuan/smollm_experiments/models
+├── run_experiments.sh          # Main experiment runner
+├── requirements.txt
+├── environment.yml
+└── DEPLOYMENT_GUIDE.md
+```
+
+**Local Disk Storage** (`/tmp5/zhuoyuan/smollm_experiments/`):
+```
+smollm_experiments/
+├── experiments/               # Raw experiment outputs (~15GB)
+│   ├── sft_padding_bs32_lr5e-5_ep1/
+│   ├── dpo_bs16_lr1e-5_ep2/
+│   └── ...
+├── artifacts/                 # Final results (~1GB)
+│   ├── experiment_results.csv
+│   ├── training_curves/
+│   └── *.png plots
+└── models/                    # Model checkpoints (~3-5GB)
+    ├── best_gec_model/
+    └── intermediate_checkpoints/
+```
+
+## ✅ Deployment Status
+
+**✅ COMPLETED STEPS**:
+- ✅ Step 1: Code Transfer (via git clone)  
+- ✅ Step 2: SSH & Extract (completed)
+- ✅ Step 3: Storage Strategy (symlinks working)
+- ✅ Step 4: Environment Setup (conda + manual PyTorch)
+- ✅ Step 5: HuggingFace Cache (configured)
+- ✅ Step 6: Test Setup (all tests passed)
+
+**🚀 READY FOR**: Experiments!
+
+---
+
 ## 🚀 Quick Deployment Steps
 
 ### Step 1: Transfer Code to Server (from your laptop)
+
+#### Option A: Git Clone (RECOMMENDED)
+```bash
+# From your server
+cd ~/projects
+git clone https://github.com/YOUR_USERNAME/SmolLM-GEC-Experiments.git SmolLM-GEC-SFT-DPO
+cd SmolLM-GEC-SFT-DPO
+```
+
+#### Option B: File Transfer
 ```bash
 # From your laptop (compress for faster transfer)
 cd /home/zhuoyuan/CSprojects/Project1_SFT_DPO_OpenSourceDraft_20250803
@@ -31,12 +87,22 @@ cd SmolLM_gec_project
 df -h | grep -E "(tmp|ssd|hdd)"
 
 # Based on your df output, /tmp5 has 580GB free (best option)
-mkdir -p /tmp5/zhuoyuan/smollm_experiments
+# Create parallel directory structure on local disk
+mkdir -p /tmp5/zhuoyuan/smollm_experiments/experiments
+mkdir -p /tmp5/zhuoyuan/smollm_experiments/models  
+mkdir -p /tmp5/zhuoyuan/smollm_experiments/artifacts
 
-# Create symbolic links in project
-ln -s /tmp5/zhuoyuan/smollm_experiments experiments
+# Create symbolic links in project (maintains same structure)
+ln -s /tmp5/zhuoyuan/smollm_experiments/experiments experiments
 ln -s /tmp5/zhuoyuan/smollm_experiments/models models
 ln -s /tmp5/zhuoyuan/smollm_experiments/artifacts artifacts
+
+# Verify structure
+ls -la | grep -E "(experiments|models|artifacts)"
+# Should show: 
+# experiments -> /tmp5/zhuoyuan/smollm_experiments/experiments
+# models -> /tmp5/zhuoyuan/smollm_experiments/models  
+# artifacts -> /tmp5/zhuoyuan/smollm_experiments/artifacts
 ```
 
 ### Step 4: Environment Setup (choose one method)
@@ -46,12 +112,17 @@ ln -s /tmp5/zhuoyuan/smollm_experiments/artifacts artifacts
 # First, update the environment name in the yml file
 sed -i 's/name: sft_dpo_env/name: SmolLM_gec_project/' environment.yml
 
-# Create the environment
+# Create the environment (may fail on PyTorch CUDA version)
 conda env create -f environment.yml
 conda activate SmolLM_gec_project
 
+# If PyTorch fails due to CUDA mismatch, install manually:
+pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu124
+pip install transformers==4.53.0 trl==0.19.0 datasets==4.0.0
+pip install accelerate evaluate fast-edit-distance pandas matplotlib seaborn tqdm
+
 # Verify installation
-python -c "import torch, transformers, trl; print('Environment ready!')"
+python -c "import torch, transformers, trl; print('✅ Environment ready!')"
 ```
 
 #### Option B: If conda is slow, use pip
@@ -86,19 +157,116 @@ export HF_DATASETS_CACHE=/tmp5/zhuoyuan/hf_cache
 echo 'export HF_HOME=/tmp5/zhuoyuan/hf_cache' >> ~/.bashrc
 echo 'export TRANSFORMERS_CACHE=/tmp5/zhuoyuan/hf_cache' >> ~/.bashrc
 echo 'export HF_DATASETS_CACHE=/tmp5/zhuoyuan/hf_cache' >> ~/.bashrc
+
+# Create cache directory
+mkdir -p /tmp5/zhuoyuan/hf_cache
 ```
 
-### Step 6: Run Experiments
+### Step 6: Test Setup
 ```bash
-# Full pipeline (~2-3 hours)
-./run_experiments.sh
+# Test 1: Library imports
+python -c "import torch, transformers, trl, datasets, accelerate; print('✅ All libraries imported successfully')"
 
-# Or individual phases
-./run_experiments.sh sft        # Just SFT experiments
-./run_experiments.sh preference # Create preference dataset
-./run_experiments.sh dpo        # Just DPO/IPO experiments
-./run_experiments.sh results    # Generate results table
+# Test 2: CUDA and GPU detection
+python -c "
+import torch
+print(f'PyTorch version: {torch.__version__}')
+print(f'CUDA available: {torch.cuda.is_available()}')
+print(f'CUDA version: {torch.version.cuda}')
+print(f'GPU count: {torch.cuda.device_count()}')
+for i in range(torch.cuda.device_count()):
+    print(f'GPU {i}: {torch.cuda.get_device_name(i)}')
+"
+
+# Test 3: Script accessibility
+python scripts/sft_train.py --help
+
+# Test 4: HuggingFace cache configuration
+python -c "
+import os
+print('HuggingFace cache locations:')
+print(f'HF_HOME: {os.getenv(\"HF_HOME\", \"Not set\")}')
+print(f'TRANSFORMERS_CACHE: {os.getenv(\"TRANSFORMERS_CACHE\", \"Not set\")}')
+print(f'HF_DATASETS_CACHE: {os.getenv(\"HF_DATASETS_CACHE\", \"Not set\")}')
+"
+
+# Test 5: Storage structure
+ls -la | grep -E "(experiments|models|artifacts)"
+echo "Storage locations:"
+echo "Experiments: $(readlink experiments)"
+echo "Models: $(readlink models)" 
+echo "Artifacts: $(readlink artifacts)"
+
+# Test 6: Model loading to cache (optional)
+python -c "
+from transformers import AutoTokenizer
+print('Testing model download to cache...')
+tokenizer = AutoTokenizer.from_pretrained('HuggingFaceTB/SmolLM-135M')
+print('✅ Model loaded successfully!')
+print('Cache should be in /tmp5/zhuoyuan/hf_cache/')
+"
 ```
+
+**Expected Results:**
+- ✅ All libraries imported successfully
+- PyTorch 2.5.1+cu124, CUDA 12.4 available, 8 RTX 3090 GPUs detected
+- SFT script shows help menu with training parameters
+- All cache paths point to `/tmp5/zhuoyuan/hf_cache`
+- Symbolic links point to `/tmp5/zhuoyuan/smollm_experiments/...`
+- Small model downloads successfully to cache
+
+### Step 7: Run Experiments
+
+#### Option 1: Quick Test (RECOMMENDED FIRST)
+```bash
+# Single small experiment to verify everything works (5-10 minutes)
+CUDA_VISIBLE_DEVICES=1 python scripts/sft_train.py \
+    --method padding --batch_size 16 --learning_rate 5e-5 \
+    --num_epochs 1
+```
+**Expected Results:**
+- Model downloads to `/tmp5/zhuoyuan/hf_cache/` 
+- Training progress bars and loss decreasing
+- Final model saved to `experiments/sft_padding_bs16_lr5e-5_ep1/`
+- Should complete in 5-10 minutes
+
+#### Option 2: Full Pipeline (All-in-One)
+```bash
+# Complete hyperparameter search (~2-3 hours)
+screen -S smollm_exp
+./run_experiments.sh
+# Press Ctrl+A+D to detach, screen -r smollm_exp to reattach
+```
+**Expected Results:**
+- 12 SFT experiments → Best model selected
+- Preference dataset generation (~19K pairs)
+- 6 DPO/IPO experiments → Final model ranking
+- Results table in `artifacts/experiment_results.csv`
+- Best model in `models/best_gec_model/`
+
+#### Option 3: Staged Approach (RECOMMENDED)
+```bash
+# Phase 1: SFT experiments (~1 hour)
+./run_experiments.sh sft
+# Check: ls experiments/ should show 12 SFT model directories
+
+# Phase 2: Preference dataset (~30 minutes)  
+./run_experiments.sh preference
+# Check: ls experiments/ should show preference_dataset.json
+
+# Phase 3: DPO/IPO experiments (~1 hour)
+./run_experiments.sh dpo
+# Check: ls experiments/ should show 6 DPO/IPO model directories
+
+# Phase 4: Results analysis (~5 minutes)
+./run_experiments.sh results
+# Check: artifacts/experiment_results.csv should exist
+```
+**Expected Results by Phase:**
+- **Phase 1**: 12 experiment directories, best SFT model identified
+- **Phase 2**: ~19K preference pairs, dataset validation metrics
+- **Phase 3**: 6 additional experiment directories, final model comparison
+- **Phase 4**: Complete results CSV, performance plots, best model selection
 
 ## ⚠️ Important Storage Notes
 
@@ -196,5 +364,38 @@ With 8 GPUs available:
    ```bash
    python scripts/sft_train.py --method padding --batch_size 32 --learning_rate 5e-5
    ```
+
+## 🧹 Cleanup (When You're Done)
+
+**Complete cleanup** (removes all experiment data):
+```bash
+# Remove all experiment data from local disk (15-20GB)
+rm -rf /tmp5/zhuoyuan/smollm_experiments/
+
+# Remove HuggingFace cache (5-10GB)  
+rm -rf /tmp5/zhuoyuan/hf_cache/
+
+# Remove conda environment (Optional)
+conda env remove -n SmolLM_gec_project
+
+# Remove project code (optional)
+rm -rf ~/projects/SmolLM-GEC-SFT-DPO/
+```
+
+**Partial cleanup** (keep results, remove large files):
+```bash
+# Keep results CSV and plots, remove model checkpoints
+rm -rf /tmp5/zhuoyuan/smollm_experiments/models/
+rm -rf /tmp5/zhuoyuan/smollm_experiments/experiments/*/checkpoints/
+
+# Clear HuggingFace cache
+rm -rf /tmp5/zhuoyuan/hf_cache/
+```
+
+**Check what you're using**:
+```bash
+du -sh /tmp5/zhuoyuan/  # Total space used
+ls -la ~/projects/SmolLM-GEC-SFT-DPO/  # Verify symlink structure
+```
 
 Good luck with your experiments! 🚀

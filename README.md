@@ -28,7 +28,7 @@ conda activate SmolLM_gec_project
 
 ### Phase 1: SFT Experiments (12 total)
 **Padding Method** (6 experiments):
-- Batch sizes: 32, 64, 128
+- Batch sizes: 32, 64 (32×2), 128 (32×4) with gradient accumulation
 - Learning rates: 5e-5, 8e-5
 
 **Packing Method** (6 experiments):
@@ -84,7 +84,7 @@ SmolLM_gec_project/
 # SFT Training
 python scripts/sft_train.py \
     --method padding \
-    --batch_size 64 \
+    --batch_size 16 \
     --learning_rate 5e-5 \
     --base_output_dir experiments
 

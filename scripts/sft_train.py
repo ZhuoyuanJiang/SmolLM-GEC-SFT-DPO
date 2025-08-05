@@ -34,6 +34,8 @@ def parse_args():
     # Hyperparameters
     parser.add_argument("--batch_size", type=int, required=True,
                         help="Training batch size")
+    parser.add_argument("--gradient_accumulation_steps", type=int, default=1,
+                        help="Number of gradient accumulation steps")
     parser.add_argument("--learning_rate", type=float, required=True,
                         help="Learning rate")
     parser.add_argument("--num_epochs", type=int, default=1,
@@ -146,7 +148,7 @@ def main():
         # Batch settings
         per_device_train_batch_size=args.batch_size,
         per_device_eval_batch_size=args.batch_size,
-        gradient_accumulation_steps=1,
+        gradient_accumulation_steps=args.gradient_accumulation_steps,
         
         # Mixed precision
         bf16=torch.cuda.is_bf16_supported(),

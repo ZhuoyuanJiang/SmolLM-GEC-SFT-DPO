@@ -93,19 +93,23 @@ run_sft_experiments() {
         --base_output_dir "$EXPERIMENTS_DIR" &
     
     CUDA_VISIBLE_DEVICES=2 python "$SCRIPTS_DIR/sft_train.py" \
-        --method padding --batch_size 64 --learning_rate 5e-5 \
+        --method padding --batch_size 32 --learning_rate 5e-5 \
+        --gradient_accumulation_steps 2 \
         --base_output_dir "$EXPERIMENTS_DIR" &
     
     CUDA_VISIBLE_DEVICES=3 python "$SCRIPTS_DIR/sft_train.py" \
-        --method padding --batch_size 64 --learning_rate 8e-5 \
+        --method padding --batch_size 32 --learning_rate 8e-5 \
+        --gradient_accumulation_steps 2 \
         --base_output_dir "$EXPERIMENTS_DIR" &
     
     CUDA_VISIBLE_DEVICES=4 python "$SCRIPTS_DIR/sft_train.py" \
-        --method padding --batch_size 128 --learning_rate 5e-5 \
+        --method padding --batch_size 32 --learning_rate 5e-5 \
+        --gradient_accumulation_steps 4 \
         --base_output_dir "$EXPERIMENTS_DIR" &
     
     CUDA_VISIBLE_DEVICES=5 python "$SCRIPTS_DIR/sft_train.py" \
-        --method padding --batch_size 128 --learning_rate 8e-5 \
+        --method padding --batch_size 32 --learning_rate 8e-5 \
+        --gradient_accumulation_steps 4 \
         --base_output_dir "$EXPERIMENTS_DIR" &
     
     CUDA_VISIBLE_DEVICES=6 python "$SCRIPTS_DIR/sft_train.py" \

@@ -58,9 +58,9 @@ def parse_args():
                         help="Gradient accumulation steps")
     
     # Sequence length settings
-    parser.add_argument("--max_length", type=int, default=512,
+    parser.add_argument("--max_length", type=int, default=256,
                         help="Maximum sequence length")
-    parser.add_argument("--max_prompt_length", type=int, default=256,
+    parser.add_argument("--max_prompt_length", type=int, default=128,
                         help="Maximum prompt length")
     
     # Output arguments
