@@ -1,0 +1,30 @@
+{
+  "config": {
+    "method": "ipo",
+    "sft_model_path": "experiments/sft_padding_bs16_lr8e-05_ep1/final_model",
+    "learning_rate": 1e-07,
+    "beta": 0.1,
+    "num_epochs": 1,
+    "batch_size": 4,
+    "gradient_accumulation_steps": 4,
+    "max_length": 256,
+    "max_prompt_length": 128,
+    "seed": 42,
+    "gradient_checkpointing": false
+  },
+  "metrics": {
+    "bleu_score": 0.4976721025732782,
+    "train_loss": 24.583599729366536,
+    "eval_loss": 24.10695457458496,
+    "training_time": 1062.8321013450623,
+    "train_samples": 16903,
+    "eval_samples": 1879,
+    "test_samples": 485
+  },
+  "system": {
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "cuda_version": "12.4",
+    "pytorch_version": "2.5.1+cu124",
+    "timestamp": "2025-08-05T16:52:08.843681"
+  }
+}

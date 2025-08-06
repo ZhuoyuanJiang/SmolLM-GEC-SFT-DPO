@@ -348,6 +348,28 @@ def main():
         json.dump(preference_data, f, indent=2)
     print(f"✅ JSON saved to {os.path.join(args.output_dir, 'preference_dataset.json')}")
     
+    # Always save human-readable version for inspection and debugging
+    human_readable = []
+    for i in range(len(preference_data['prompt'])):
+        human_readable.append({
+            "entry_number": i,
+            "prompt": preference_data['prompt'][i],
+            "chosen": preference_data['chosen'][i],
+            "rejected": preference_data['rejected'][i]
+        })
+    
+    # Save full human-readable version
+    with open(os.path.join(args.output_dir, "preference_dataset_human_readable.json"), "w") as f:
+        json.dump(human_readable, f, indent=2)
+    print(f"✅ Human-readable version saved to {os.path.join(args.output_dir, 'preference_dataset_human_readable.json')}")
+    
+    # Save a sample for quick quality check (first 100 examples)
+    sample_size = min(100, len(human_readable))
+    sample_data = human_readable[:sample_size]
+    with open(os.path.join(args.output_dir, "preference_dataset_sample.json"), "w") as f:
+        json.dump(sample_data, f, indent=2)
+    print(f"✅ Sample ({sample_size} examples) saved to {os.path.join(args.output_dir, 'preference_dataset_sample.json')}")
+    
     # Save configuration and stats
     config = {
         "sft_model_path": args.sft_model_path,

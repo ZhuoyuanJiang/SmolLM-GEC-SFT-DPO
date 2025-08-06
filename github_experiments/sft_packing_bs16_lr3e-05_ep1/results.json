@@ -1,0 +1,28 @@
+{
+  "config": {
+    "method": "packing",
+    "batch_size": 16,
+    "learning_rate": 3e-05,
+    "num_epochs": 1,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "max_seq_length": 256,
+    "seed": 42,
+    "model_name": "HuggingFaceTB/SmolLM-135M",
+    "gradient_checkpointing": false
+  },
+  "metrics": {
+    "bleu_score": 0.17704519177814215,
+    "train_loss": 2.996891954421997,
+    "eval_loss": 3.6970512866973877,
+    "training_time": 117.31422066688538,
+    "train_samples": 19823,
+    "test_samples": 485
+  },
+  "system": {
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "cuda_version": "12.4",
+    "pytorch_version": "2.5.1+cu124",
+    "timestamp": "2025-08-05T12:55:20.626861"
+  }
+}

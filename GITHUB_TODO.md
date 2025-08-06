@@ -56,8 +56,8 @@ mkdir -p github_models
 ### 2. Copy experiment results (small files only)
 For each experiment in `/tmp5/zhuoyuan/smollm_experiments/experiments/`:
 - ✅ Copy `results.json` (metrics, BLEU scores)
-- ✅ Copy `training_args.json` or `config.json` (how it was trained)
-- ✅ Copy `README.md` if exists
+- ✅ Copy `training_history.json` (detailed training metrics - DPO/IPO experiments)
+- ✅ Copy `README.md` (experiment documentation)
 - ✅ Create `final_model/` folder and copy ONLY these files:
   - `config.json` - Model architecture
   - `tokenizer_config.json` - Tokenizer settings  
@@ -69,15 +69,21 @@ For each experiment in `/tmp5/zhuoyuan/smollm_experiments/experiments/`:
   - `added_tokens.json` - New tokens
 - ❌ Skip `checkpoint*/` folders (hundreds of MB)
 - ❌ Skip `model.safetensors` (500MB+ model weights)
-- ❌ Skip `*.bin` files (binary formats)
+- ❌ Skip `*.bin` files (binary formats including training_args.bin)
 
 ### 3. Copy artifacts (analysis results only)
 From `/tmp5/zhuoyuan/smollm_experiments/artifacts/`:
 - ✅ Copy all `.csv` files (results tables)
 - ✅ Copy all `.json` files (statistics, best model info)
 - ✅ Copy all `.png` files (plots)
-- ❌ Skip `preference_dataset/` folder (can be regenerated)
-- ❌ Skip any `*_dataset/` folders
+- ✅ Create `preference_dataset/` folder and copy:
+  - `preference_dataset.json` (~7MB - full dataset)
+  - `preference_dataset_human_readable.json` (~8MB - readable format)
+  - `preference_dataset_sample.json` (~9KB - sample for quick review)
+  - `results.json` (~1KB - dataset generation metrics)
+- ❌ Skip preference_dataset/temp_* folders
+- ❌ Skip preference_dataset/*.arrow files
+- ❌ Skip preference_dataset/preference_dataset/ subfolder (HF dataset cache)
 
 ### 4. Create models documentation
 Create `github_models/README.md` explaining:
@@ -100,10 +106,10 @@ Add entries to ignore symlinked directories but include github_* directories:
 ```
 
 ## Expected Sizes
-- `github_experiments/`: ~90MB total (includes tokenizer files, ~5MB per experiment × 18)
-- `github_artifacts/`: ~200KB total (CSVs, JSONs, PNGs)
+- `github_experiments/`: ~90MB total (includes tokenizer files, ~5MB per experiment × 22)
+- `github_artifacts/`: ~15-16MB total (includes preference dataset JSONs, plots, CSVs)
 - `github_models/`: ~2KB (just README)
-- **Total GitHub addition**: ~90MB ✅ (still very reasonable for GitHub)
+- **Total GitHub addition**: ~106MB ✅ (very reasonable for GitHub, provides full reproducibility)
 
 ## Benefits of This Approach
 1. ✅ Symlinks remain for future experiments (use fast /tmp5 disk)
@@ -117,9 +123,9 @@ Show this file to Claude and say:
 "All experiments are complete. Please execute the GITHUB_TODO.md plan to prepare for GitHub upload."
 
 ## Verification Checklist
-- [ ] All 12 SFT experiments have results.json
-- [ ] Preference dataset was created
-- [ ] All 6 DPO/IPO experiments have results.json  
+- [ ] All 16 SFT experiments have results.json
+- [ ] Preference dataset was created with JSONs
+- [ ] All 6 DPO/IPO experiments have results.json and training_history.json
 - [ ] Artifacts contain experiment_results.csv
-- [ ] Artifacts contain visualization plots
-- [ ] Total size of github_* directories < 1MB
+- [ ] Artifacts contain 3 visualization plots (PNG files)
+- [ ] Total size of github_* directories ~106MB (acceptable for GitHub)

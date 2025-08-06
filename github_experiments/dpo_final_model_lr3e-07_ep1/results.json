@@ -1,0 +1,30 @@
+{
+  "config": {
+    "method": "dpo",
+    "sft_model_path": "experiments/sft_padding_bs16_lr8e-05_ep1/final_model",
+    "learning_rate": 3e-07,
+    "beta": 0.1,
+    "num_epochs": 1,
+    "batch_size": 4,
+    "gradient_accumulation_steps": 4,
+    "max_length": 256,
+    "max_prompt_length": 128,
+    "seed": 42,
+    "gradient_checkpointing": false
+  },
+  "metrics": {
+    "bleu_score": 0.5008787737314653,
+    "train_loss": 0.582843601590863,
+    "eval_loss": 0.48852214217185974,
+    "training_time": 1088.4181425571442,
+    "train_samples": 16903,
+    "eval_samples": 1879,
+    "test_samples": 485
+  },
+  "system": {
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "cuda_version": "12.4",
+    "pytorch_version": "2.5.1+cu124",
+    "timestamp": "2025-08-05T16:53:08.111273"
+  }
+}

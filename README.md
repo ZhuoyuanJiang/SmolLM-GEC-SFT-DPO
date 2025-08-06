@@ -26,9 +26,9 @@ conda activate SmolLM_gec_project
 
 ## 📋 Experiment Plan
 
-### Phase 1: SFT Experiments (12 total)
-**Padding Method** (6 experiments):
-- Batch sizes: 32, 64 (32×2), 128 (32×4) with gradient accumulation
+### Phase 1: SFT Experiments (16 total)
+**Padding Method** (10 experiments):
+- Batch sizes: 8, 16, 32, 64 (32×2), 128 (32×4) with gradient accumulation
 - Learning rates: 5e-5, 8e-5
 
 **Packing Method** (6 experiments):
@@ -106,6 +106,24 @@ python scripts/aggregate_results.py \
     --output_dir artifacts \
     --generate_plots
 ```
+
+## 🛠️ Utility Scripts
+
+### Create Training Configurations
+After running experiments, generate human-readable training configurations:
+
+```bash
+# Generate training_config.json for each experiment and all_experiments_config.json summary
+python create_training_configs.py
+```
+
+This utility script:
+- Extracts hyperparameters from experiment directory names
+- Creates `training_config.json` in each experiment folder with all training parameters
+- Generates `artifacts/all_experiments_config.json` with a complete summary table
+- Useful for reproducing experiments and understanding the hyperparameter search space
+
+**Note**: Run this after experiments complete to document all training configurations for reproducibility.
 
 ## 🎯 Expected Performance
 

@@ -122,9 +122,10 @@ run_sft_experiments() {
     
     wait_for_jobs
     
-    # Second batch (4 experiments in parallel)
-    echo "Starting second batch of SFT experiments (4 parallel)..."
+    # Second batch (8 experiments in parallel - adding padding bs8 and bs16)
+    echo "Starting second batch of SFT experiments (8 parallel)..."
     
+    # Packing experiments
     CUDA_VISIBLE_DEVICES=0 python "$SCRIPTS_DIR/sft_train.py" \
         --method packing --batch_size 8 --learning_rate 3e-5 \
         --base_output_dir "$EXPERIMENTS_DIR" &
@@ -139,6 +140,23 @@ run_sft_experiments() {
     
     CUDA_VISIBLE_DEVICES=3 python "$SCRIPTS_DIR/sft_train.py" \
         --method packing --batch_size 16 --learning_rate 5e-5 \
+        --base_output_dir "$EXPERIMENTS_DIR" &
+    
+    # NEW: Padding bs8 and bs16 experiments  
+    CUDA_VISIBLE_DEVICES=4 python "$SCRIPTS_DIR/sft_train.py" \
+        --method padding --batch_size 8 --learning_rate 5e-5 \
+        --base_output_dir "$EXPERIMENTS_DIR" &
+    
+    CUDA_VISIBLE_DEVICES=5 python "$SCRIPTS_DIR/sft_train.py" \
+        --method padding --batch_size 8 --learning_rate 8e-5 \
+        --base_output_dir "$EXPERIMENTS_DIR" &
+    
+    CUDA_VISIBLE_DEVICES=6 python "$SCRIPTS_DIR/sft_train.py" \
+        --method padding --batch_size 16 --learning_rate 5e-5 \
+        --base_output_dir "$EXPERIMENTS_DIR" &
+    
+    CUDA_VISIBLE_DEVICES=7 python "$SCRIPTS_DIR/sft_train.py" \
+        --method padding --batch_size 16 --learning_rate 8e-5 \
         --base_output_dir "$EXPERIMENTS_DIR" &
     
     wait_for_jobs
@@ -352,6 +370,9 @@ main() {
     echo "================================="
     echo "Check $ARTIFACTS_DIR/ for results and plots"
     echo "Best model saved to $MODELS_DIR/best_gec_model"
+    echo ""
+    echo "💡 TIP: Run 'python create_training_configs.py' to generate"
+    echo "        training configuration files for all experiments"
 }
 
 # Help function

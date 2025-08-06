@@ -1,0 +1,122 @@
+[
+  {
+    "entry_number": 1651,
+    "prompt": "Improve the grammaticality of this sentence: By this, the member will not need to worry about the retirement life later.",
+    "chosen": "By this, the member will not need to worry about retirement later.",
+    "rejected": "By this way, the member will not have to worry about their retirement now."
+  },
+  {
+    "entry_number": 2001,
+    "prompt": "Update to remove grammar errors: This will indirectly help to solve some of the problems posed by ageing population, as it will help to reduce elderly dependency and changing Singapore into an independent society where elderly will be less reliant on the government.",
+    "chosen": "This will indirectly help to solve some of the problems posed by an aging population, as it will help to reduce elderly dependency and change Singapore into an independent society where the elderly will be less reliant on the government.",
+    "rejected": "This will indirectly help to solve some of the problems posed by an aging population, as it will help to reduce elderly dependency and change Singapore into an independent society where the elderly will be less dependent upon the government."
+  },
+  {
+    "entry_number": 2414,
+    "prompt": "Improve the grammaticality: There is a need for government to focus on these problems, in order to improve the welfare of the aged.",
+    "chosen": "There is a need for the government to focus on these problems in order to improve the welfare of the aged.",
+    "rejected": "There are a number of needs that governments should be focused on as they strive to improve the welfare of the aged"
+  },
+  {
+    "entry_number": 4852,
+    "prompt": "Fix all grammatical errors: More people were then evacuated from their homes as the radiation spreads widely and rapidly.",
+    "chosen": "More people were then evacuated from their homes as the radiation spread widely and rapidly.",
+    "rejected": "More people were then evacuated from their homes, as the radiation spread widely and quickly."
+  },
+  {
+    "entry_number": 5128,
+    "prompt": "Fix grammatical errors in this sentence: The percentage of destruction on nuclear plant by a large aircraft being used to attack a nuclear facility with the purpose of releasing radioactive materials is close to zero.",
+    "chosen": "The percentage of destruction on a nuclear plant by a large aircraft being used to attack a nuclear facility with the purpose of releasing radioactive materials is close to zero.",
+    "rejected": "The percentage of destruction caused by a large aircraft using a nuclear plant for an attack against a nuclear facility with the purpose of releasing radioactive material is close to zero."
+  },
+  {
+    "entry_number": 5895,
+    "prompt": "Fix grammar: With easy evidence at their disposal, they will use the law to suppress any opposition to their will.",
+    "chosen": "With easy evidence at their disposal, they will use the law to suppress any opposition to their will.",
+    "rejected": "With easy evidence of their own dispositionat their disposal, they will use the law to suppress any opposition against their will."
+  },
+  {
+    "entry_number": 6296,
+    "prompt": "Fix grammatical errors: The best thing I saw was the Valley of the temples, because there were a lot of ancient temples and monuments and ruines and they were really beautifuland also the panorama was amazing!",
+    "chosen": "The best thing I saw was the Valley of the Temples because there were a lot of ancient temples and monuments and ruins and they were really beautiful and also the panorama was amazing!",
+    "rejected": "The best thing I saw was the Valley of the Temples, because there were a lot of ancient temples and monuments, and ruins, and they were really beautiful. And also, the panoramas were amazing!"
+  },
+  {
+    "entry_number": 6910,
+    "prompt": "Improve the grammaticality of this sentence: Generally I miss them all because I live in a distant city away from where my family lives now.",
+    "chosen": "Generally, I miss them all because I live in a distant city away from where my family lives now.",
+    "rejected": "Generally, I miss them all because I live in a distant city away from where my family lives right now."
+  },
+  {
+    "entry_number": 7544,
+    "prompt": "Fix grammar errors in this sentence: But I hope one day go to a tournament, travel to Spain and watch my favourite player who is Rafael Nadal from Spain.",
+    "chosen": "But I hope one day, go to a tournament, travel to Spain, and watch my favorite player, Rafael Nadal, from Spain.",
+    "rejected": "But I hope one day you will go on a tournament; traveling to Spain and watching your favorite player, who is Rafael Nadal from Spain,"
+  },
+  {
+    "entry_number": 8783,
+    "prompt": "Fix grammaticality in this sentence: NANY 'S has party dresses and wonderful shoes that you can use on special occasions.",
+    "chosen": "NANY 'S has party dresses and wonderful shoes that you can wear on special occasions.",
+    "rejected": "NANY 's party dress, lovely shoes, and nice wedding dresses will be your best outfit for the occasion."
+  },
+  {
+    "entry_number": 9107,
+    "prompt": "Grammar improvements: On top of that, taking a bus won't necessarily mean that you will save time because both buses and cars won't be able to move in the rush hour.",
+    "chosen": "On top of that, taking a bus won't necessarily mean that you will save time because both buses and cars won't be able to move in the rush hour.",
+    "rejected": "On top of that, taking a bus won't necessarily mean that you'll save time because both buses and cars won't be able to go at the same speed during rush hours."
+  },
+  {
+    "entry_number": 10895,
+    "prompt": "Fix grammaticality: Peter got so scared that ran away.",
+    "chosen": "Peter got so scared that he ran away.",
+    "rejected": "Peter got so frightened that he ran away."
+  },
+  {
+    "entry_number": 12085,
+    "prompt": "Fix grammaticality in this sentence: The municipal board of Clayton conducts meetings fortnightly to communicate about the improvements that have been made and that have been planned to be implemented in future in the town.",
+    "chosen": "The municipal board of Clayton conducts meetings fortnightly to communicate about the improvements that have been made and that have been planned to be implemented in the future in the town.",
+    "rejected": "The municipal board of Clayton conducts regular meetings fortnightly, to discuss the improvements that have been made and that are being planned for to be implemented in the future in the town."
+  },
+  {
+    "entry_number": 12946,
+    "prompt": "Fix errors in this text: You were supposed to put unburned garbage into the specific bin, weren't you?",
+    "chosen": "You were supposed to put unburned garbage into a specific bin, weren't you?",
+    "rejected": "You had been supposed to put unburnable garbage into a specific bin. wasn't it?"
+  },
+  {
+    "entry_number": 13227,
+    "prompt": "Remove grammar mistakes: It caused by a trivial thing.",
+    "chosen": "It was caused by a trivial thing.",
+    "rejected": "It is caused by an insignificant thing."
+  },
+  {
+    "entry_number": 14210,
+    "prompt": "Fix the grammar mistakes: We got back in the car, we went to the big park.",
+    "chosen": "We got back in the car, and we went to the big park.",
+    "rejected": "We got back into the car and went to the big park."
+  },
+  {
+    "entry_number": 15304,
+    "prompt": "Improve the grammaticality of this text: Yes, this is fundamental rule for managers.",
+    "chosen": "Yes, this is a fundamental rule for managers.",
+    "rejected": "Yes, this is a fundamental rule that managers must follow."
+  },
+  {
+    "entry_number": 17256,
+    "prompt": "Remove all grammatical errors from this text: As soon as I arrived at the place, I ordered a beer.",
+    "chosen": "As soon as I arrived at the place, I ordered a beer.",
+    "rejected": "As soon as I arrived in the place, I ordered a beer."
+  },
+  {
+    "entry_number": 17354,
+    "prompt": "Improve the grammaticality of this sentence: The characters are almost junior high-school boys or girls, so they are admirable for the younger children.",
+    "chosen": "The characters are almost junior high-school boys or girls, so they are admirable to the younger children.",
+    "rejected": "The characters are almost junior high school boys or girls; therefore, they are admirable to the younger children."
+  },
+  {
+    "entry_number": 18548,
+    "prompt": "Fix errors in this text: All I have to do is to make efforts every day!!",
+    "chosen": "All I have to do is to make efforts every day!!",
+    "rejected": "All I have to do, is to try and work harder everyday!!"
+  }
+]

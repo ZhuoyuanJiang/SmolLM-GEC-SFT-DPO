@@ -6,6 +6,7 @@ Collects results from all experiments and generates summary tables
 
 import argparse
 import os
+import sys
 import json
 import glob
 import pandas as pd
@@ -43,7 +44,9 @@ def find_experiment_results(experiments_dir: str) -> List[str]:
         print(f"No results.json files found in {experiments_dir}")
         return []
     
-    print(f"Found {len(results_files)} experiment results")
+    # Use stderr for debug messages when return_best is used
+    debug_out = sys.stderr if '--return_best' in sys.argv else sys.stdout
+    print(f"Found {len(results_files)} experiment results", file=debug_out)
     return results_files
 
 
@@ -310,7 +313,9 @@ def main():
         return
     
     # Load all results
-    print("Loading experiment results...")
+    # Use stderr for debug output when --return_best is used
+    debug_out = sys.stderr if '--return_best' in sys.argv else sys.stdout
+    print("Loading experiment results...", file=debug_out)
     results = []
     for results_file in results_files:
         result = load_experiment_result(results_file)
@@ -318,10 +323,10 @@ def main():
             results.append(result)
     
     if not results:
-        print("No valid results loaded!")
+        print("No valid results loaded!", file=debug_out)
         return
     
-    print(f"Loaded {len(results)} experiment results")
+    print(f"Loaded {len(results)} experiment results", file=debug_out)
     
     # Filter by phase if specified
     if args.phase != "all":
@@ -362,13 +367,15 @@ def main():
     # Save results table
     table_path = os.path.join(args.output_dir, "experiment_results.csv")
     df.to_csv(table_path, index=False)
-    print(f"✅ Results table saved to {table_path}")
+    # Use stderr for status messages when --return_best is used
+    debug_out = sys.stderr if args.return_best else sys.stdout
+    print(f"✅ Results table saved to {table_path}", file=debug_out)
     
     # Save summary statistics
     stats_path = os.path.join(args.output_dir, "summary_statistics.json")
     with open(stats_path, 'w') as f:
         json.dump(stats, f, indent=2, default=str)
-    print(f"✅ Summary statistics saved to {stats_path}")
+    print(f"✅ Summary statistics saved to {stats_path}", file=debug_out)
     
     # Generate plots if requested
     if args.generate_plots:
@@ -388,9 +395,14 @@ def main():
     top_5 = df[display_columns].head(5)
     
     for idx, row in top_5.iterrows():
+        # Convert to strings to handle mixed types
+        batch_size = str(row['Batch Size']) if pd.notna(row['Batch Size']) else '-'
+        sft_lr = f"{row['SFT LR']:.1e}" if pd.notna(row['SFT LR']) else '-'
+        final_lr = str(row['Final LR']) if pd.notna(row['Final LR']) else '-'
+        
         print(f"{idx+1:2d}. {row['Final Method']:3s} {row['Base Method']:7s} "
-              f"BS={row['Batch Size']:3s} SFT_LR={row['SFT LR']:8s} "
-              f"Final_LR={row['Final LR']:8s} BLEU={row['BLEU Score']:.4f}")
+              f"BS={batch_size:>3s} SFT_LR={sft_lr:>8s} "
+              f"Final_LR={final_lr:>8s} BLEU={row['BLEU Score']:.4f}")
     
     print("-" * 100)
 

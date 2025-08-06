@@ -88,10 +88,6 @@ logs/
 !github_artifacts/
 !github_models/
 
-# Data files (can be large and regenerated)
-preference_dataset/
-*_dataset.json
-*_dataset/
 
 # BUT keep example configs if any
 !example_*.json

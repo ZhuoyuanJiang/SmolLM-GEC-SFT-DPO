@@ -1,0 +1,22 @@
+{
+  "training_type": "ipo",
+  "method": "ipo",
+  "batch_size": 16,
+  "learning_rate": 3e-07,
+  "gradient_accumulation_steps": 1,
+  "num_epochs": 1,
+  "beta": 0.1,
+  "model_name": "HuggingFaceTB/SmolLM-135M",
+  "optimizer": "adamw_torch",
+  "weight_decay": 0.01,
+  "warmup_ratio": 0.1,
+  "max_seq_length": 512,
+  "seed": 42,
+  "experiment_name": "ipo_final_model_lr3e-07_ep1",
+  "effective_batch_size": 16,
+  "bleu_score": null,
+  "final_loss": null,
+  "eval_loss": null,
+  "training_completed": true,
+  "has_final_model": true
+}

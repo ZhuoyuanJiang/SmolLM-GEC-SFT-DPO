@@ -263,7 +263,7 @@ screen -S smollm_exp
 # Check: artifacts/experiment_results.csv should exist
 ```
 **Expected Results by Phase:**
-- **Phase 1**: 12 experiment directories, best SFT model identified
+- **Phase 1**: 16 experiment directories, best SFT model identified
 - **Phase 2**: ~19K preference pairs, dataset validation metrics
 - **Phase 3**: 6 additional experiment directories, final model comparison
 - **Phase 4**: Complete results CSV, performance plots, best model selection
@@ -355,6 +355,7 @@ With 8 GPUs available:
 2. **Use screen/tmux**: Experiments continue if SSH disconnects
    ```bash
    screen -S smollm_exp
+   conda activate SmolLM_gec_project 
    ./run_experiments.sh
    # Ctrl+A+D to detach
    # screen -r smollm_exp to reattach

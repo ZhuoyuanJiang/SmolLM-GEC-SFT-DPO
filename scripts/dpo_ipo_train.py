@@ -173,8 +173,13 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(tokenizer_path)
     
     # Setup both models with the same tokenizer configuration
+    # CRITICAL: Both models must go through the SAME tokenizer setup process
     model, tokenizer = setup_tokenizer_once(model, tokenizer)
-    ref_model, _ = setup_tokenizer_once(ref_model, tokenizer)
+    
+    # For DPO: Apply the SAME tokenizer setup to the reference model
+    # We need a fresh tokenizer to ensure identical setup
+    tokenizer = AutoTokenizer.from_pretrained(args.base_model_name)  # Reload fresh tokenizer!
+    ref_model, tokenizer = setup_tokenizer_once(ref_model, tokenizer)
     
     # Verify model configurations match
     assert model.config.vocab_size == ref_model.config.vocab_size, "Vocab size mismatch between models!"

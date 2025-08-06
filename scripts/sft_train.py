@@ -101,7 +101,9 @@ def main():
     # Create output directory
     if args.output_dir is None:
         # Auto-generate output directory name
-        exp_name = f"sft_{args.method}_bs{args.batch_size}_lr{args.learning_rate}_ep{args.num_epochs}"
+        # Calculate effective batch size (batch_size * gradient_accumulation_steps)
+        effective_bs = args.batch_size * args.gradient_accumulation_steps
+        exp_name = f"sft_{args.method}_bs{effective_bs}_lr{args.learning_rate}_ep{args.num_epochs}"
         args.output_dir = create_output_dir(args.base_output_dir, exp_name)
     else:
         os.makedirs(args.output_dir, exist_ok=True)
