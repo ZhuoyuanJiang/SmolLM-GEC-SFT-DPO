@@ -2,9 +2,23 @@
 
 Comprehensive hyperparameter optimization for SmolLM-135M on grammatical error correction using SFT, DPO, and IPO methods.
 
+**📊 Results Included**: This repository contains complete results from 22 experiments achieving BLEU score ~0.50 for grammatical error correction. All configurations, metrics, and analysis are available in the `github_*` directories.
+
 ## 🚀 Quick Start
 
-### Prerequisites
+### Explore Results (No Setup Required)
+```bash
+# View experiment comparison
+cat github_artifacts/experiment_results.csv
+
+# Check best model configuration  
+cat github_models/best_gec_model/training_config.json
+
+# Browse all experiment hyperparameters
+cat github_artifacts/all_experiments_config.json
+```
+
+### Prerequisites (For Running Experiments)
 - 8 GPUs with 24GB+ VRAM (RTX 3090 or better)
 - Conda environment with PyTorch, Transformers, TRL, etc.
 - ~200GB free disk space for experiments
@@ -63,18 +77,80 @@ The pipeline will generate:
 ## 📁 Project Structure
 
 ```
-SmolLM_gec_project/
+SmolLM-GEC-SFT-DPO/
 ├── scripts/                    # Python training scripts
 │   ├── utils.py               # Shared utilities
 │   ├── sft_train.py           # SFT training
 │   ├── create_preference_dataset.py  # Preference data generation
 │   ├── dpo_ipo_train.py       # DPO/IPO training
 │   └── aggregate_results.py   # Results analysis
-├── experiments/               # Individual experiment outputs
-├── artifacts/                 # Final results and plots
-├── models/                    # Best model checkpoints
-└── run_experiments.sh         # Main experiment launcher
+├── github_experiments/        # All experiment results (GitHub-ready)
+├── github_artifacts/          # Analysis results & datasets
+├── github_models/             # Best model configuration
+├── run_experiments.sh         # Main experiment launcher
+├── create_training_configs.py # Generate training configurations
+└── copy_to_github.sh          # Prepare GitHub directories
 ```
+
+## 📂 Repository Contents
+
+### `github_experiments/` (102MB)
+Contains results from all 22 experiments without model weights:
+```
+github_experiments/
+├── sft_padding_bs32_lr5e-05_ep1/    # Example SFT experiment
+│   ├── results.json                 # BLEU scores, losses
+│   ├── training_config.json         # Complete hyperparameters
+│   ├── README.md                    # Experiment description
+│   └── final_model/                 # Tokenizer configs only
+│       ├── config.json              # Model architecture
+│       ├── tokenizer.json           # Tokenization rules
+│       └── ...                      # Other config files
+├── dpo_final_model_lr3e-07_ep1/     # Example DPO experiment
+│   ├── training_history.json        # Detailed training metrics
+│   └── ...
+└── ... (20 more experiments)
+```
+
+### `github_artifacts/` (15MB)
+Analysis results and preference dataset:
+```
+github_artifacts/
+├── experiment_results.csv           # Performance comparison table
+├── all_experiments_config.json      # Consolidated hyperparameters
+├── summary_statistics.json          # Aggregated metrics
+├── best_model_info.json            # Best model metadata
+├── bleu_by_method.png              # Visualization plots
+├── learning_rate_analysis.png
+├── sft_bleu_vs_batch_size.png
+└── preference_dataset/              # DPO/IPO training data
+    ├── preference_dataset.json      # 19K preference pairs
+    ├── preference_dataset_human_readable.json
+    └── preference_dataset_sample.json
+```
+
+### `github_models/` (4.7MB)
+Best performing model configuration:
+```
+github_models/
+├── README.md                        # Model documentation
+├── best_model_info.json            # Metadata
+└── best_gec_model/                 # DPO lr=3e-7, BLEU ~0.50
+    ├── training_config.json         # Exact hyperparameters
+    ├── config.json                  # Model architecture
+    ├── tokenizer.json               # Tokenizer files
+    └── ...                          # Other configs
+```
+
+### `scripts/`
+Core training and evaluation scripts with comprehensive docstrings and argument parsing.
+
+### Symlinked Directories (Not in GitHub)
+- `experiments/` → `/tmp5/zhuoyuan/smollm_experiments/experiments`
+- `artifacts/` → `/tmp5/zhuoyuan/smollm_experiments/artifacts`  
+- `models/` → `/tmp5/zhuoyuan/smollm_experiments/models`
+
+These symlinks are used during active experimentation on the compute server.
 
 ## 🔧 Manual Usage
 
@@ -109,21 +185,39 @@ python scripts/aggregate_results.py \
 
 ## 🛠️ Utility Scripts
 
-### Create Training Configurations
-After running experiments, generate human-readable training configurations:
+### Generate Training Configurations
+Creates comprehensive training configuration documentation:
 
 ```bash
-# Generate training_config.json for each experiment and all_experiments_config.json summary
+# Run after experiments complete
 python create_training_configs.py
 ```
 
-This utility script:
-- Extracts hyperparameters from experiment directory names
-- Creates `training_config.json` in each experiment folder with all training parameters
-- Generates `artifacts/all_experiments_config.json` with a complete summary table
-- Useful for reproducing experiments and understanding the hyperparameter search space
+**What it does:**
+- Creates `training_config.json` in each experiment folder with:
+  - Complete hyperparameters (learning rate, batch size, epochs, etc.)
+  - Training method (padding/packing for SFT, DPO/IPO)
+  - Model settings (optimizer, warmup, weight decay)
+  - Performance metrics (BLEU score, losses)
+- Generates `artifacts/all_experiments_config.json` - consolidated table of all 22 experiments
+- Essential for reproducibility and understanding the hyperparameter search
 
-**Note**: Run this after experiments complete to document all training configurations for reproducibility.
+**Note**: Already run for this repository - configurations are included in `github_experiments/`.
+
+### Prepare GitHub Directories
+Copies experiment results without large model weights:
+
+```bash
+# Creates github_* directories from symlinked experiment data
+./copy_to_github.sh
+```
+
+**What it does:**
+- Copies experiment results, configs, and tokenizers to `github_experiments/`
+- Copies analysis results and datasets to `github_artifacts/`
+- Copies best model configuration to `github_models/`
+- Skips model weights (`.safetensors`, `.bin` files) to keep repository size manageable
+- Total output: ~122MB (vs ~12GB with weights)
 
 ## 🎯 Expected Performance
 
@@ -173,8 +267,8 @@ If you use this hyperparameter search framework, please cite:
 ```bibtex
 @misc{smollm_gec_hpo,
   title={Hyperparameter Optimization for SmolLM Grammatical Error Correction},
-  author={Your Name},
-  year={2024},
+  author={Zhuoyuan Jiang},
+  year={2025},
   note={Comprehensive SFT/DPO/IPO hyperparameter search}
 }
 ```
