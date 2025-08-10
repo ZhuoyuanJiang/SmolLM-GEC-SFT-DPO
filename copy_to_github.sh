@@ -8,11 +8,17 @@ set -e
 echo "📦 Preparing GitHub-ready experiment data..."
 echo "==========================================="
 
-# Source and destination directories
-SRC_EXPERIMENTS="/tmp5/zhuoyuan/smollm_experiments/experiments"
-SRC_ARTIFACTS="/tmp5/zhuoyuan/smollm_experiments/artifacts"
+# Source and destination directories (use symlinks for portability)
+# Resolve symlinks to get actual paths
+SRC_EXPERIMENTS=$(readlink -f "experiments")
+SRC_ARTIFACTS=$(readlink -f "artifacts")
 DST_EXPERIMENTS="github_experiments"
 DST_ARTIFACTS="github_artifacts"
+
+echo "Using source directories:"
+echo "  Experiments: $SRC_EXPERIMENTS"
+echo "  Artifacts: $SRC_ARTIFACTS"
+echo ""
 
 # Function to copy experiment data
 copy_experiment() {

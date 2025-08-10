@@ -19,7 +19,7 @@ cat github_artifacts/all_experiments_config.json
 ```
 
 ### Prerequisites (For Running Experiments)
-- 8 GPUs with 24GB+ VRAM (RTX 3090 or better)
+- 8 GPUs with 24GB+ VRAM (tested on RTX 3090 and RTX 6000 Ada Generation)
 - Conda environment with PyTorch, Transformers, TRL, etc.
 - ~200GB free disk space for experiments
 
@@ -42,7 +42,7 @@ conda activate SmolLM_gec_project
 ```
 
 #### Optional: FlashAttention 2
-If you don't have FlashAttention 2 installed, you can add it (verified on RTX 3090, PyTorch 2.5.1+cu124):
+If you don't have FlashAttention 2 installed, you can add it (verified on RTX 3090 and RTX 6000 Ada Generation, PyTorch 2.5.1+cu124):
 
 ```bash
 conda activate SmolLM_gec_project

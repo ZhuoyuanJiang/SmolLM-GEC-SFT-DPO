@@ -217,6 +217,22 @@ print('Cache should be in /tmp5/zhuoyuan/hf_cache/')
 
 ### Step 7: Run Experiments
 
+⚠️ **CRITICAL FOR NODE SWITCHING**: If you switched from another node (e.g., vllab6 to vllab14), you MUST set the cache paths for this node:
+```bash
+# For vllab14:
+HF_HOME=/ssd1/zhuoyuan/hf_cache \
+TRANSFORMERS_CACHE=/ssd1/zhuoyuan/hf_cache \
+HF_DATASETS_CACHE=/ssd1/zhuoyuan/hf_cache \
+./run_experiments.sh
+
+# For vllab6:
+HF_HOME=/tmp5/zhuoyuan/hf_cache \
+TRANSFORMERS_CACHE=/tmp5/zhuoyuan/hf_cache \
+HF_DATASETS_CACHE=/tmp5/zhuoyuan/hf_cache \
+./run_experiments.sh
+```
+Without this, experiments will fail with "Permission denied" errors!
+
 #### Option 1: Quick Test (RECOMMENDED FIRST)
 ```bash
 # Test standard padding first (5-10 minutes)
@@ -241,6 +257,19 @@ CUDA_VISIBLE_DEVICES=1 python scripts/sft_train.py \
 ```bash
 # Complete hyperparameter search (~2-3 hours)
 screen -S smollm_exp
+cd ~/projects/SmolLM-GEC-SFT-DPO
+
+# Set cache for your current node (CRITICAL!)
+# For vllab14:
+export HF_HOME=/ssd1/zhuoyuan/hf_cache
+export TRANSFORMERS_CACHE=/ssd1/zhuoyuan/hf_cache
+export HF_DATASETS_CACHE=/ssd1/zhuoyuan/hf_cache
+
+# For vllab6 (uncomment if on vllab6):
+# export HF_HOME=/tmp5/zhuoyuan/hf_cache
+# export TRANSFORMERS_CACHE=/tmp5/zhuoyuan/hf_cache
+# export HF_DATASETS_CACHE=/tmp5/zhuoyuan/hf_cache
+
 ./run_experiments.sh
 # Press Ctrl+A+D to detach, screen -r smollm_exp to reattach
 
@@ -357,6 +386,15 @@ pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu124
 # You can resume with specific phases later
 ```
 
+### Issue: "FileNotFoundError: /tmp5/..." on vllab14
+This happens when scripts have hardcoded paths from vllab6.
+```bash
+# Fixed in create_training_configs.py - now uses symlinks
+# If you see this in other scripts, replace hardcoded paths with:
+# Path("experiments").resolve() instead of Path("/tmp5/...")
+# Path("artifacts").resolve() instead of Path("/tmp5/...")
+```
+
 ## 📈 Expected Timeline
 
 With 8 GPUs available:
@@ -377,7 +415,12 @@ With 8 GPUs available:
 2. **Use screen/tmux**: Experiments continue if SSH disconnects
    ```bash
    screen -S smollm_exp
-   conda activate SmolLM_gec_project 
+   conda activate SmolLM_gec_project
+   # CRITICAL: Set cache for your node!
+   export HF_HOME=/ssd1/zhuoyuan/hf_cache  # vllab14
+   # export HF_HOME=/tmp5/zhuoyuan/hf_cache  # vllab6
+   export TRANSFORMERS_CACHE=$HF_HOME
+   export HF_DATASETS_CACHE=$HF_HOME
    ./run_experiments.sh
    # Ctrl+A+D to detach
    # screen -r smollm_exp to reattach

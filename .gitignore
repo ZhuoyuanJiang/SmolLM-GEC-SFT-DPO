@@ -103,3 +103,7 @@ Thumbs.db
 
 # Screen session files
 screenlog.*
+
+
+# symlink change instruction (for node switching only)
+symlink_change_instruction.md

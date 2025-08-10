@@ -97,50 +97,100 @@ def get_experiment_configs():
             "num_epochs": 1
         },
         
-        # SFT Packing experiments
-        "sft_packing_bs4_lr3e-05_ep1": {
+        # SFT Dataset Packing experiments
+        "sft_dataset_packing_bs4_lr3e-05_ep1": {
             "training_type": "sft",
-            "method": "packing",
+            "method": "dataset_packing",
             "batch_size": 4,
             "learning_rate": 3e-5,
             "gradient_accumulation_steps": 1,
             "num_epochs": 1
         },
-        "sft_packing_bs4_lr5e-05_ep1": {
+        "sft_dataset_packing_bs4_lr5e-05_ep1": {
             "training_type": "sft",
-            "method": "packing",
+            "method": "dataset_packing",
             "batch_size": 4,
             "learning_rate": 5e-5,
             "gradient_accumulation_steps": 1,
             "num_epochs": 1
         },
-        "sft_packing_bs8_lr3e-05_ep1": {
+        "sft_dataset_packing_bs8_lr3e-05_ep1": {
             "training_type": "sft",
-            "method": "packing",
+            "method": "dataset_packing",
             "batch_size": 8,
             "learning_rate": 3e-5,
             "gradient_accumulation_steps": 1,
             "num_epochs": 1
         },
-        "sft_packing_bs8_lr5e-05_ep1": {
+        "sft_dataset_packing_bs8_lr5e-05_ep1": {
             "training_type": "sft",
-            "method": "packing",
+            "method": "dataset_packing",
             "batch_size": 8,
             "learning_rate": 5e-5,
             "gradient_accumulation_steps": 1,
             "num_epochs": 1
         },
-        "sft_packing_bs16_lr3e-05_ep1": {
+        "sft_dataset_packing_bs16_lr3e-05_ep1": {
             "training_type": "sft",
-            "method": "packing",
+            "method": "dataset_packing",
             "batch_size": 16,
             "learning_rate": 3e-5,
             "gradient_accumulation_steps": 1,
             "num_epochs": 1
         },
-        "sft_packing_bs16_lr5e-05_ep1": {
+        "sft_dataset_packing_bs16_lr5e-05_ep1": {
             "training_type": "sft",
-            "method": "packing",
+            "method": "dataset_packing",
+            "batch_size": 16,
+            "learning_rate": 5e-5,
+            "gradient_accumulation_steps": 1,
+            "num_epochs": 1
+        },
+        
+        # SFT Batch Packing experiments
+        "sft_batch_packing_bs4_lr3e-05_ep1": {
+            "training_type": "sft",
+            "method": "batch_packing",
+            "batch_size": 4,
+            "learning_rate": 3e-5,
+            "gradient_accumulation_steps": 1,
+            "num_epochs": 1
+        },
+        "sft_batch_packing_bs4_lr5e-05_ep1": {
+            "training_type": "sft",
+            "method": "batch_packing",
+            "batch_size": 4,
+            "learning_rate": 5e-5,
+            "gradient_accumulation_steps": 1,
+            "num_epochs": 1
+        },
+        "sft_batch_packing_bs8_lr3e-05_ep1": {
+            "training_type": "sft",
+            "method": "batch_packing",
+            "batch_size": 8,
+            "learning_rate": 3e-5,
+            "gradient_accumulation_steps": 1,
+            "num_epochs": 1
+        },
+        "sft_batch_packing_bs8_lr5e-05_ep1": {
+            "training_type": "sft",
+            "method": "batch_packing",
+            "batch_size": 8,
+            "learning_rate": 5e-5,
+            "gradient_accumulation_steps": 1,
+            "num_epochs": 1
+        },
+        "sft_batch_packing_bs16_lr3e-05_ep1": {
+            "training_type": "sft",
+            "method": "batch_packing",
+            "batch_size": 16,
+            "learning_rate": 3e-5,
+            "gradient_accumulation_steps": 1,
+            "num_epochs": 1
+        },
+        "sft_batch_packing_bs16_lr5e-05_ep1": {
+            "training_type": "sft",
+            "method": "batch_packing",
             "batch_size": 16,
             "learning_rate": 5e-5,
             "gradient_accumulation_steps": 1,
@@ -224,8 +274,9 @@ def get_experiment_configs():
 
 
 def main():
-    exp_dir = Path("/tmp5/zhuoyuan/smollm_experiments/experiments")
-    artifacts_dir = Path("/tmp5/zhuoyuan/smollm_experiments/artifacts")
+    # Use symlinks instead of hardcoded paths - works on any node
+    exp_dir = Path("experiments").resolve()  # Resolves to actual path via symlink
+    artifacts_dir = Path("artifacts").resolve()  # Resolves to actual path via symlink
     
     # Get predefined configs
     all_configs = get_experiment_configs()
@@ -268,8 +319,11 @@ def main():
     # First SFT padding
     for name in sorted([k for k in all_configs.keys() if "sft_padding" in k]):
         sorted_configs[name] = all_configs[name]
-    # Then SFT packing
-    for name in sorted([k for k in all_configs.keys() if "sft_packing" in k]):
+    # Then SFT dataset packing
+    for name in sorted([k for k in all_configs.keys() if "sft_dataset_packing" in k]):
+        sorted_configs[name] = all_configs[name]
+    # Then SFT batch packing
+    for name in sorted([k for k in all_configs.keys() if "sft_batch_packing" in k]):
         sorted_configs[name] = all_configs[name]
     # Then DPO
     for name in sorted([k for k in all_configs.keys() if "dpo" in k]):
