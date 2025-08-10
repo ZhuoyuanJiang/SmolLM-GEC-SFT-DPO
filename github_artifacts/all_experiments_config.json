@@ -223,12 +223,7 @@
     "max_seq_length": 512,
     "seed": 42,
     "experiment_name": "sft_packing_bs16_lr3e-05_ep1",
-    "effective_batch_size": 16,
-    "bleu_score": null,
-    "final_loss": null,
-    "eval_loss": null,
-    "training_completed": true,
-    "has_final_model": true
+    "effective_batch_size": 16
   },
   "sft_packing_bs16_lr5e-05_ep1": {
     "training_type": "sft",
@@ -244,12 +239,7 @@
     "max_seq_length": 512,
     "seed": 42,
     "experiment_name": "sft_packing_bs16_lr5e-05_ep1",
-    "effective_batch_size": 16,
-    "bleu_score": null,
-    "final_loss": null,
-    "eval_loss": null,
-    "training_completed": true,
-    "has_final_model": true
+    "effective_batch_size": 16
   },
   "sft_packing_bs4_lr3e-05_ep1": {
     "training_type": "sft",
@@ -265,12 +255,7 @@
     "max_seq_length": 512,
     "seed": 42,
     "experiment_name": "sft_packing_bs4_lr3e-05_ep1",
-    "effective_batch_size": 4,
-    "bleu_score": null,
-    "final_loss": null,
-    "eval_loss": null,
-    "training_completed": true,
-    "has_final_model": true
+    "effective_batch_size": 4
   },
   "sft_packing_bs4_lr5e-05_ep1": {
     "training_type": "sft",
@@ -286,12 +271,7 @@
     "max_seq_length": 512,
     "seed": 42,
     "experiment_name": "sft_packing_bs4_lr5e-05_ep1",
-    "effective_batch_size": 4,
-    "bleu_score": null,
-    "final_loss": null,
-    "eval_loss": null,
-    "training_completed": true,
-    "has_final_model": true
+    "effective_batch_size": 4
   },
   "sft_packing_bs8_lr3e-05_ep1": {
     "training_type": "sft",
@@ -307,12 +287,7 @@
     "max_seq_length": 512,
     "seed": 42,
     "experiment_name": "sft_packing_bs8_lr3e-05_ep1",
-    "effective_batch_size": 8,
-    "bleu_score": null,
-    "final_loss": null,
-    "eval_loss": null,
-    "training_completed": true,
-    "has_final_model": true
+    "effective_batch_size": 8
   },
   "sft_packing_bs8_lr5e-05_ep1": {
     "training_type": "sft",
@@ -328,12 +303,7 @@
     "max_seq_length": 512,
     "seed": 42,
     "experiment_name": "sft_packing_bs8_lr5e-05_ep1",
-    "effective_batch_size": 8,
-    "bleu_score": null,
-    "final_loss": null,
-    "eval_loss": null,
-    "training_completed": true,
-    "has_final_model": true
+    "effective_batch_size": 8
   },
   "dpo_final_model_lr1e-06_ep1": {
     "training_type": "dpo",

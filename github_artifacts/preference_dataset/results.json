@@ -1,6 +1,6 @@
 {
   "config": {
-    "sft_model_path": "experiments/sft_padding_bs16_lr8e-05_ep1/final_model",
+    "sft_model_path": "experiments/sft_padding_bs32_lr8e-05_ep1/final_model",
     "dataset_name": "grammarly/coedit",
     "batch_size": 128,
     "generation_configs": {
@@ -27,21 +27,21 @@
     "seed": 42
   },
   "metrics": {
-    "final_dataset_size": 18782,
-    "processing_time": 725.594426,
+    "final_dataset_size": 19045,
+    "processing_time": 375.925594,
     "total_processed": 19823,
-    "successful": 18782,
-    "skipped_identical": 448,
+    "successful": 19045,
+    "skipped_identical": 318,
     "skipped_empty": 0,
-    "skipped_small_diff": 567,
-    "skipped_length_ratio": 26,
-    "total_chosen_dist": 121217,
-    "total_rejected_dist": 677243
+    "skipped_small_diff": 435,
+    "skipped_length_ratio": 25,
+    "total_chosen_dist": 134086,
+    "total_rejected_dist": 796105
   },
   "system": {
-    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
     "cuda_version": "12.4",
     "pytorch_version": "2.5.1+cu124",
-    "timestamp": "2025-08-05T13:50:44.093722"
+    "timestamp": "2025-08-10T05:34:29.810369"
   }
 }

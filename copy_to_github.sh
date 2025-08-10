@@ -59,7 +59,6 @@ echo "📊 Copying experiment results..."
 echo "--------------------------------"
 
 # SFT experiments (22 total: 10 padding + 6 dataset_packing + 6 batch_packing)
-# Note: Also handles old "sft_packing_*" naming for backward compatibility
 
 # Padding experiments (10)
 for exp in sft_padding_bs8_lr5e-05_ep1 sft_padding_bs8_lr8e-05_ep1 \
@@ -70,17 +69,14 @@ for exp in sft_padding_bs8_lr5e-05_ep1 sft_padding_bs8_lr8e-05_ep1 \
     copy_experiment "$exp"
 done
 
-# Dataset packing experiments (6) - try both old and new naming
+# Dataset packing experiments (6)
 for exp in sft_dataset_packing_bs4_lr3e-05_ep1 sft_dataset_packing_bs4_lr5e-05_ep1 \
            sft_dataset_packing_bs8_lr3e-05_ep1 sft_dataset_packing_bs8_lr5e-05_ep1 \
-           sft_dataset_packing_bs16_lr3e-05_ep1 sft_dataset_packing_bs16_lr5e-05_ep1 \
-           sft_packing_bs4_lr3e-05_ep1 sft_packing_bs4_lr5e-05_ep1 \
-           sft_packing_bs8_lr3e-05_ep1 sft_packing_bs8_lr5e-05_ep1 \
-           sft_packing_bs16_lr3e-05_ep1 sft_packing_bs16_lr5e-05_ep1; do
+           sft_dataset_packing_bs16_lr3e-05_ep1 sft_dataset_packing_bs16_lr5e-05_ep1; do
     copy_experiment "$exp"
 done
 
-# Batch packing experiments (6) - new method
+# Batch packing experiments (6)
 for exp in sft_batch_packing_bs4_lr3e-05_ep1 sft_batch_packing_bs4_lr5e-05_ep1 \
            sft_batch_packing_bs8_lr3e-05_ep1 sft_batch_packing_bs8_lr5e-05_ep1 \
            sft_batch_packing_bs16_lr3e-05_ep1 sft_batch_packing_bs16_lr5e-05_ep1; do
@@ -115,6 +111,54 @@ cp "$SRC_ARTIFACTS/preference_dataset/preference_dataset.json" "$DST_ARTIFACTS/p
 cp "$SRC_ARTIFACTS/preference_dataset/preference_dataset_human_readable.json" "$DST_ARTIFACTS/preference_dataset/"
 cp "$SRC_ARTIFACTS/preference_dataset/preference_dataset_sample.json" "$DST_ARTIFACTS/preference_dataset/"
 cp "$SRC_ARTIFACTS/preference_dataset/results.json" "$DST_ARTIFACTS/preference_dataset/"
+
+echo ""
+echo "🏆 Copying best model..."
+echo "------------------------"
+DST_MODELS="github_models"
+
+# Read best model path from artifacts/best_model_info.json
+if [ -f "$SRC_ARTIFACTS/best_model_info.json" ]; then
+    # Extract the best_model_path from JSON
+    BEST_MODEL_PATH=$(grep -o '"best_model_path": "[^"]*"' "$SRC_ARTIFACTS/best_model_info.json" | cut -d'"' -f4)
+    
+    if [ -n "$BEST_MODEL_PATH" ] && [ -d "$BEST_MODEL_PATH" ]; then
+        echo "Found best model: $BEST_MODEL_PATH"
+        
+        mkdir -p "$DST_MODELS/best_gec_model"
+        
+        # Copy model config and tokenizer from the best model's final_model directory
+        if [ -d "$BEST_MODEL_PATH/final_model" ]; then
+            for file in config.json tokenizer_config.json tokenizer.json vocab.json \
+                       merges.txt special_tokens_map.json generation_config.json \
+                       added_tokens.json; do
+                [ -f "$BEST_MODEL_PATH/final_model/$file" ] && cp "$BEST_MODEL_PATH/final_model/$file" "$DST_MODELS/best_gec_model/"
+            done
+        fi
+        
+        # Copy training config if exists
+        [ -f "$BEST_MODEL_PATH/training_config.json" ] && cp "$BEST_MODEL_PATH/training_config.json" "$DST_MODELS/best_gec_model/"
+        
+        # Copy best model info
+        cp "$SRC_ARTIFACTS/best_model_info.json" "$DST_MODELS/"
+        
+        # Create README if it doesn't exist
+        if [ ! -f "$DST_MODELS/README.md" ]; then
+            echo "# Best GEC Model" > "$DST_MODELS/README.md"
+            echo "" >> "$DST_MODELS/README.md"
+            echo "Best model selected: $BEST_MODEL_PATH" >> "$DST_MODELS/README.md"
+            echo "" >> "$DST_MODELS/README.md"
+            echo "This directory contains the configuration for the best performing model." >> "$DST_MODELS/README.md"
+            echo "Model weights are not included to keep repository size manageable." >> "$DST_MODELS/README.md"
+        fi
+        
+        echo "✅ Best model configuration copied to $DST_MODELS/"
+    else
+        echo "⚠️  Best model path not found: $BEST_MODEL_PATH"
+    fi
+else
+    echo "⚠️  No best_model_info.json found in artifacts"
+fi
 
 echo ""
 echo "📊 Size check..."

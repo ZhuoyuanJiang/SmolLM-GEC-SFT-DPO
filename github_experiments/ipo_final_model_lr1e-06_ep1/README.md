@@ -3,8 +3,8 @@ library_name: transformers
 model_name: ipo_final_model_lr1e-06_ep1
 tags:
 - generated_from_trainer
-- dpo
 - trl
+- dpo
 licence: license
 ---
 

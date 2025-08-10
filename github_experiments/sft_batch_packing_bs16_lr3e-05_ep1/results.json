@@ -1,0 +1,29 @@
+{
+  "config": {
+    "method": "batch_packing",
+    "batch_size": 16,
+    "learning_rate": 3e-05,
+    "num_epochs": 1,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "max_seq_length": 256,
+    "seed": 42,
+    "model_name": "HuggingFaceTB/SmolLM-135M",
+    "gradient_checkpointing": false,
+    "flash_attention_2": true
+  },
+  "metrics": {
+    "bleu_score": 0.4824747947355776,
+    "train_loss": 1.8312776090638883,
+    "eval_loss": 2.711745023727417,
+    "training_time": 121.02113032341003,
+    "train_samples": 19823,
+    "test_samples": 485
+  },
+  "system": {
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "cuda_version": "12.4",
+    "pytorch_version": "2.5.1+cu124",
+    "timestamp": "2025-08-10T05:19:55.236027"
+  }
+}

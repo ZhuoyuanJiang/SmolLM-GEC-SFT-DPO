@@ -1,7 +1,7 @@
 {
   "config": {
     "method": "ipo",
-    "sft_model_path": "experiments/sft_padding_bs16_lr8e-05_ep1/final_model",
+    "sft_model_path": "experiments/sft_padding_bs32_lr8e-05_ep1/final_model",
     "learning_rate": 1e-07,
     "beta": 0.1,
     "num_epochs": 1,
@@ -13,18 +13,18 @@
     "gradient_checkpointing": false
   },
   "metrics": {
-    "bleu_score": 0.4976721025732782,
-    "train_loss": 24.583599729366536,
-    "eval_loss": 24.10695457458496,
-    "training_time": 1062.8321013450623,
-    "train_samples": 16903,
-    "eval_samples": 1879,
+    "bleu_score": 0.5029863667961298,
+    "train_loss": 24.152992106195708,
+    "eval_loss": 23.564964294433594,
+    "training_time": 561.5320265293121,
+    "train_samples": 17140,
+    "eval_samples": 1905,
     "test_samples": 485
   },
   "system": {
-    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
     "cuda_version": "12.4",
     "pytorch_version": "2.5.1+cu124",
-    "timestamp": "2025-08-05T16:52:08.843681"
+    "timestamp": "2025-08-10T05:51:23.278731"
   }
 }

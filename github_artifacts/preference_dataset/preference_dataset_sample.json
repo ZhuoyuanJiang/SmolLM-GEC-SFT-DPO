@@ -1,122 +1,602 @@
 [
   {
-    "entry_number": 1651,
-    "prompt": "Improve the grammaticality of this sentence: By this, the member will not need to worry about the retirement life later.",
-    "chosen": "By this, the member will not need to worry about retirement later.",
-    "rejected": "By this way, the member will not have to worry about their retirement now."
+    "entry_number": 0,
+    "prompt": "Remove all grammatical errors from this text: For example, countries with a lot of deserts can terraform their desert to increase their habitable land and using irrigation to provide clean water to the desert.",
+    "chosen": "For example, countries with a lot of deserts can terraform their desert to increase their habitable land and use irrigation to provide clean water to the desert.",
+    "rejected": "For example, countries that have a lot of deserts can terraform their desert into an area where they will be able to grow food without having to use too much water or not enough rain for it."
   },
   {
-    "entry_number": 2001,
-    "prompt": "Update to remove grammar errors: This will indirectly help to solve some of the problems posed by ageing population, as it will help to reduce elderly dependency and changing Singapore into an independent society where elderly will be less reliant on the government.",
-    "chosen": "This will indirectly help to solve some of the problems posed by an aging population, as it will help to reduce elderly dependency and change Singapore into an independent society where the elderly will be less reliant on the government.",
-    "rejected": "This will indirectly help to solve some of the problems posed by an aging population, as it will help to reduce elderly dependency and change Singapore into an independent society where the elderly will be less dependent upon the government."
+    "entry_number": 1,
+    "prompt": "Improve the grammaticality: As the number of people grows, the need of habitable environment is unquestionably essential.",
+    "chosen": "As the number of people grows, the need for a habitable environment is unquestionably essential.",
+    "rejected": "As the population continues to grow, the necessity for a habitable environment has been unquestionably imperative."
   },
   {
-    "entry_number": 2414,
-    "prompt": "Improve the grammaticality: There is a need for government to focus on these problems, in order to improve the welfare of the aged.",
-    "chosen": "There is a need for the government to focus on these problems in order to improve the welfare of the aged.",
-    "rejected": "There are a number of needs that governments should be focused on as they strive to improve the welfare of the aged"
+    "entry_number": 2,
+    "prompt": "Improve the grammaticality of this sentence: Besides some technologically determinists that allow the development of biometric identification, this technology is also shaped by three social factors, namely, the desire of the society for safety, convenience and economy.",
+    "chosen": "Besides some technologically determinists that allow the development of biometric identification, this technology is also shaped by three social factors, namely, the desire of society for safety, convenience, and economic growth.",
+    "rejected": "Besides technological determinist that allows the development of biometric identification, this technology has been also shaped by these three social factors"
   },
   {
-    "entry_number": 4852,
-    "prompt": "Fix all grammatical errors: More people were then evacuated from their homes as the radiation spreads widely and rapidly.",
-    "chosen": "More people were then evacuated from their homes as the radiation spread widely and rapidly.",
-    "rejected": "More people were then evacuated from their homes, as the radiation spread widely and quickly."
+    "entry_number": 3,
+    "prompt": "Remove all grammatical errors from this text: Safety is one of the crucial problems that many countries and companies concern.",
+    "chosen": "Safety is one of the crucial problems that many countries and companies are concerned about.",
+    "rejected": "Safety is a major problem for many countries and companies,"
   },
   {
-    "entry_number": 5128,
-    "prompt": "Fix grammatical errors in this sentence: The percentage of destruction on nuclear plant by a large aircraft being used to attack a nuclear facility with the purpose of releasing radioactive materials is close to zero.",
-    "chosen": "The percentage of destruction on a nuclear plant by a large aircraft being used to attack a nuclear facility with the purpose of releasing radioactive materials is close to zero.",
-    "rejected": "The percentage of destruction caused by a large aircraft using a nuclear plant for an attack against a nuclear facility with the purpose of releasing radioactive material is close to zero."
+    "entry_number": 4,
+    "prompt": "Fix grammaticality in this sentence: On one hand more and more virus and hack can access personal computers, so the secret data and documents may be stolen.",
+    "chosen": "On the one hand, more and more viruses and hackers can access personal computers, so the secret data and documents may be stolen.",
+    "rejected": "On the one hand, there is a greater number of viruses and hackers are able to access personal computer systems, so the secret data and documents may be stolen."
   },
   {
-    "entry_number": 5895,
-    "prompt": "Fix grammar: With easy evidence at their disposal, they will use the law to suppress any opposition to their will.",
-    "chosen": "With easy evidence at their disposal, they will use the law to suppress any opposition to their will.",
-    "rejected": "With easy evidence of their own dispositionat their disposal, they will use the law to suppress any opposition against their will."
+    "entry_number": 5,
+    "prompt": "Improve the grammar of this text: We can have fingerprint verification reader combined with built-in smartcard reader, and it only takes seconds to verify one's identification.",
+    "chosen": "We can have a fingerprint verification reader combined with a built-in smart card reader, and it only takes seconds to verify one's identification.",
+    "rejected": "We can have a fingerprint verification reader combined with an integrated smart card reader, which will take just seconds to verify my identity."
   },
   {
-    "entry_number": 6296,
-    "prompt": "Fix grammatical errors: The best thing I saw was the Valley of the temples, because there were a lot of ancient temples and monuments and ruines and they were really beautifuland also the panorama was amazing!",
-    "chosen": "The best thing I saw was the Valley of the Temples because there were a lot of ancient temples and monuments and ruins and they were really beautiful and also the panorama was amazing!",
-    "rejected": "The best thing I saw was the Valley of the Temples, because there were a lot of ancient temples and monuments, and ruins, and they were really beautiful. And also, the panoramas were amazing!"
+    "entry_number": 6,
+    "prompt": "Fix grammar in this sentence: Nuclear technology had come a long way since Ernest Rutherford first split the atom in 1917.",
+    "chosen": "Nuclear technology has come a long way since Ernest Rutherford first split the atom in 1917.",
+    "rejected": "Nuclear technology has come a long way from Ernest Rutherford's discovery of the nucleus, which was made about 20 years ago."
   },
   {
-    "entry_number": 6910,
-    "prompt": "Improve the grammaticality of this sentence: Generally I miss them all because I live in a distant city away from where my family lives now.",
-    "chosen": "Generally, I miss them all because I live in a distant city away from where my family lives now.",
-    "rejected": "Generally, I miss them all because I live in a distant city away from where my family lives right now."
+    "entry_number": 7,
+    "prompt": "Fix grammar in the sentence: The subsequent realization that the additional neutrons produced from fission reaction can induce a nuclear chain reaction sparked off widespread interest in nuclear technology.",
+    "chosen": "The subsequent realization that the additional neutrons produced by fission reaction can induce a nuclear chain reaction sparked off widespread interest in nuclear technology.",
+    "rejected": "The subsequent realization that an additional neutron produced by the fission reactor could induce a nuclear chain reaction spurred on widespread interest in nuclear technologies"
   },
   {
-    "entry_number": 7544,
-    "prompt": "Fix grammar errors in this sentence: But I hope one day go to a tournament, travel to Spain and watch my favourite player who is Rafael Nadal from Spain.",
-    "chosen": "But I hope one day, go to a tournament, travel to Spain, and watch my favorite player, Rafael Nadal, from Spain.",
-    "rejected": "But I hope one day you will go on a tournament; traveling to Spain and watching your favorite player, who is Rafael Nadal from Spain,"
+    "entry_number": 8,
+    "prompt": "Update to remove grammar errors: The leakage of radioactive gas into the atmosphere prompted the many anti-nuclear demonstrations that sprung up across the America in the following months.",
+    "chosen": "The leakage of radioactive gas into the atmosphere prompted many anti-nuclear demonstrations that sprang up across America in the following months.",
+    "rejected": "The leakage of radioactive gases into the atmosphere led numerous anti-nuclear demonstrations that sprang up across the America during the following months."
   },
   {
-    "entry_number": 8783,
-    "prompt": "Fix grammaticality in this sentence: NANY 'S has party dresses and wonderful shoes that you can use on special occasions.",
-    "chosen": "NANY 'S has party dresses and wonderful shoes that you can wear on special occasions.",
-    "rejected": "NANY 's party dress, lovely shoes, and nice wedding dresses will be your best outfit for the occasion."
+    "entry_number": 9,
+    "prompt": "Fix grammaticality in this sentence: Although the reactor was eventually cleaned up and decontaminated, the damaged dealt to nuclear power was irreversible and caused its subsequent decline.",
+    "chosen": "Although the reactor was eventually cleaned up and decontaminated, the damage dealt to nuclear power was irreversible, and it subsequently caused its subsequent decline.",
+    "rejected": "Although the reactor was initially cleaned up and decontaminated, the damage carried by radioactive waste is irreversible, causing its ensuing decline."
   },
   {
-    "entry_number": 9107,
-    "prompt": "Grammar improvements: On top of that, taking a bus won't necessarily mean that you will save time because both buses and cars won't be able to move in the rush hour.",
-    "chosen": "On top of that, taking a bus won't necessarily mean that you will save time because both buses and cars won't be able to move in the rush hour.",
-    "rejected": "On top of that, taking a bus won't necessarily mean that you'll save time because both buses and cars won't be able to go at the same speed during rush hours."
+    "entry_number": 10,
+    "prompt": "Fix grammar errors in this sentence: This endeavor to produce more nuclear power have stimulated the development of safer designs of nuclear reactors.",
+    "chosen": "This endeavor to produce more nuclear power has stimulated the development of safer designs for nuclear reactors.",
+    "rejected": "This effort has spurred a development of safer designs for nuclear reactor construction."
   },
   {
-    "entry_number": 10895,
-    "prompt": "Fix grammaticality: Peter got so scared that ran away.",
-    "chosen": "Peter got so scared that he ran away.",
-    "rejected": "Peter got so frightened that he ran away."
+    "entry_number": 11,
+    "prompt": "Improve the grammaticality of this sentence: In conclusion, nuclear technology development had always been driven by social factors.",
+    "chosen": "In conclusion, nuclear technology has always been driven by social factors.",
+    "rejected": "In conclusion, nuclear technologies have always been driven by social factors"
   },
   {
-    "entry_number": 12085,
-    "prompt": "Fix grammaticality in this sentence: The municipal board of Clayton conducts meetings fortnightly to communicate about the improvements that have been made and that have been planned to be implemented in future in the town.",
-    "chosen": "The municipal board of Clayton conducts meetings fortnightly to communicate about the improvements that have been made and that have been planned to be implemented in the future in the town.",
-    "rejected": "The municipal board of Clayton conducts regular meetings fortnightly, to discuss the improvements that have been made and that are being planned for to be implemented in the future in the town."
+    "entry_number": 12,
+    "prompt": "Improve the grammaticality: World War 2 had given it momentum in its initial research, but it will be mankind's need for a renewable and environmentally friendly energy source that will drive nuclear technology's future developments.",
+    "chosen": "World War 2 has given it momentum in its initial research, but it will be mankind's need for a renewable and environmentally friendly energy source that will drive nuclear technology's future developments.",
+    "rejected": "World War II gave the world momentum to its initial research; however, it will also be mankind's needs for an environmentally sustainable energy source that would drive nuclear technologies' development."
   },
   {
-    "entry_number": 12946,
-    "prompt": "Fix errors in this text: You were supposed to put unburned garbage into the specific bin, weren't you?",
-    "chosen": "You were supposed to put unburned garbage into a specific bin, weren't you?",
-    "rejected": "You had been supposed to put unburnable garbage into a specific bin. wasn't it?"
+    "entry_number": 13,
+    "prompt": "Remove grammatical mistakes: These solutions may be generated by analyzing existing products to find out how the weaknesses can be improved while retaining the strength.",
+    "chosen": "These solutions may be generated by analyzing existing products to find out how the weaknesses can be improved while retaining the strength.",
+    "rejected": "These solutions could possibly generate answers from analysis of existing products to identify ways in which they might improve their strengths and retain them as a stronger asset."
   },
   {
-    "entry_number": 13227,
-    "prompt": "Remove grammar mistakes: It caused by a trivial thing.",
-    "chosen": "It was caused by a trivial thing.",
-    "rejected": "It is caused by an insignificant thing."
+    "entry_number": 14,
+    "prompt": "Remove all grammatical errors from this text: Therefore careful analysis of the product has to be made before selecting a solution for testing and implementation.",
+    "chosen": "Therefore, careful analysis of the product has to be made before selecting a solution for testing and implementing.",
+    "rejected": "Therefore, careful analysis of the product is necessary before selecting a solution for its testing and implementation."
   },
   {
-    "entry_number": 14210,
-    "prompt": "Fix the grammar mistakes: We got back in the car, we went to the big park.",
-    "chosen": "We got back in the car, and we went to the big park.",
-    "rejected": "We got back into the car and went to the big park."
+    "entry_number": 15,
+    "prompt": "Fix disfluencies in the sentence: An example is water which is a good renewable resource and is plentiful.",
+    "chosen": "An example is water, which is a good renewable resource and is plentiful.",
+    "rejected": "An example of water, which is a good renewable resource and abundant."
   },
   {
-    "entry_number": 15304,
-    "prompt": "Improve the grammaticality of this text: Yes, this is fundamental rule for managers.",
-    "chosen": "Yes, this is a fundamental rule for managers.",
-    "rejected": "Yes, this is a fundamental rule that managers must follow."
+    "entry_number": 16,
+    "prompt": "Fix grammaticality in this sentence: All the solutions will be thoroughly analysed by the engineers before coming to a conclusion.",
+    "chosen": "All the solutions will be thoroughly analyzed by the engineers before coming to a conclusion.",
+    "rejected": "All of the solutions will have been thoroughly analyzed and then, finally, it'll come up with my conclusions."
   },
   {
-    "entry_number": 17256,
-    "prompt": "Remove all grammatical errors from this text: As soon as I arrived at the place, I ordered a beer.",
-    "chosen": "As soon as I arrived at the place, I ordered a beer.",
-    "rejected": "As soon as I arrived in the place, I ordered a beer."
+    "entry_number": 17,
+    "prompt": "Fix grammaticality of the sentence: As a result, students have no chance to develop their creative thinking and gradually become stereotype.",
+    "chosen": "As a result, students have no chance to develop their creative thinking and gradually become stereotypes.",
+    "rejected": "As a result, students do not have any opportunity to develop their creativity and slowly they become stereotypes."
   },
   {
-    "entry_number": 17354,
-    "prompt": "Improve the grammaticality of this sentence: The characters are almost junior high-school boys or girls, so they are admirable for the younger children.",
-    "chosen": "The characters are almost junior high-school boys or girls, so they are admirable to the younger children.",
-    "rejected": "The characters are almost junior high school boys or girls; therefore, they are admirable to the younger children."
+    "entry_number": 18,
+    "prompt": "Fix grammar in the sentence: However, after one year study, he found history not suitable for himself and became interested in physics and showed great talent.",
+    "chosen": "However, after one year of study, he found history not suitable for him, and he became interested in physics and showed great talent.",
+    "rejected": "However, after a year's study, he finds his own work to be unsuitable for him, and he becomes interested in physics, showing that he is good at it."
   },
   {
-    "entry_number": 18548,
-    "prompt": "Fix errors in this text: All I have to do is to make efforts every day!!",
-    "chosen": "All I have to do is to make efforts every day!!",
-    "rejected": "All I have to do, is to try and work harder everyday!!"
+    "entry_number": 19,
+    "prompt": "Fix grammar: Whether China can take this chance to catch up with those well-developed countries or even surpass them depends on China's trail of solving the present problems.",
+    "chosen": "Whether China can take this chance to catch up with those well-developed countries or even surpass them depends on China's track record in solving the present problems.",
+    "rejected": "Whether China could take this chance to catch up with these well-developed countries, or it could even overtake them in their current situation, depends on how China takes its route through the world economy and solves the present problems."
+  },
+  {
+    "entry_number": 20,
+    "prompt": "Improve the grammar of this text: If China can come up with effective policy to change its education system and stimulate innovation, China's pace to flourish may become even faster.",
+    "chosen": "If China can come up with an effective policy to change its education system and stimulate innovation, China's pace to flourish may become even faster.",
+    "rejected": "If China could come up with an effective policy to change its educational system and stimulate innovation, China's pace to flourish will be much quicker than it was before."
+  },
+  {
+    "entry_number": 21,
+    "prompt": "Make the sentence grammatical: The process of developing a new product based on innovation is not an easy task for the innovators.",
+    "chosen": "The process of developing a new product based on innovation is not an easy task for innovators.",
+    "rejected": "The development of a new product by innovative means is not an easy thing to do, but it does have its benefits."
+  },
+  {
+    "entry_number": 22,
+    "prompt": "Make the sentence grammatical: By diffusion and adoption of the innovation products by the public or specific users, the innovators have to face the consequences.",
+    "chosen": "By diffusion and adoption of the innovation products by the public or specific users, the innovators have to face the consequences.",
+    "rejected": "By diffusion and adoption of innovative product innovations from the public or specific users, the innovators have to face the consequences."
+  },
+  {
+    "entry_number": 23,
+    "prompt": "Improve the grammaticality of this text: These are not the only challenges that the innovators are going to deal with.",
+    "chosen": "These are not the only challenges that innovators are going to face.",
+    "rejected": "These are not all the challenges that the innovators will be dealing with in terms of their innovation process."
+  },
+  {
+    "entry_number": 24,
+    "prompt": "Fix grammar errors: In order to process from the initial stage of innovation development to the final stage, the most important issue is to have a huge sum of fund for development and commercial purposes.",
+    "chosen": "In order to process from the initial stage of innovation development to the final stage, the most important issue is to have a huge sum of funds for development and commercial purposes.",
+    "rejected": "In order to be able to implement this in the future, it will require large sums of funds for development and commercialization."
+  },
+  {
+    "entry_number": 25,
+    "prompt": "Fix grammatical errors in this sentence: So, the manufacture company, for example, the company that the innovators are working for, is one of the major investors that is providing the fund.",
+    "chosen": "So, the manufacturing company, for example, the company that innovators are working for, is one of the major investors that is providing the fund.",
+    "rejected": "So, the manufacturing company, for example, the company that innovators are working on, is one of the major investors that is providing the funds to."
+  },
+  {
+    "entry_number": 26,
+    "prompt": "Fix all grammatical errors: For example, if the manufacturing company did not earn profit in the market, then in order to reduce the cost and prevent the loss from getting worse, the manufacturing company has to stop funding the innovators for their prototypes development.",
+    "chosen": "For example, if the manufacturing company did not earn profit in the market, then in order to reduce the cost and prevent the loss from getting worse, the manufacturing company has to stop funding the innovators for their prototypes development.",
+    "rejected": "For example, if the manufacturing company did not earn profits on the market, it would have to stop funding the innovators who were developing prototypes of their inventions."
+  },
+  {
+    "entry_number": 27,
+    "prompt": "Update to remove grammar errors: Then the innovators have to stop all works for the development.",
+    "chosen": "Then, the innovators have to stop all work for the development.",
+    "rejected": "Then, these innovations must be stopped from being developed so that they can continue to develop and improve."
+  },
+  {
+    "entry_number": 28,
+    "prompt": "Fix the grammatical mistakes: This shows that the manufacturing companies are trying to reduce the unnecessary burden to maintain the companies' stand.",
+    "chosen": "This shows that the manufacturing companies are trying to reduce the unnecessary burden on the companies' stand.",
+    "rejected": "This shows that manufacturers have been trying to reduce the unnecessary burden on their standing by maintaining a company's stand."
+  },
+  {
+    "entry_number": 29,
+    "prompt": "Improve the grammaticality: Therefore, this is one of the major factors that will definitely affect the innovators from developing innovation products.",
+    "chosen": "Therefore, this is one of the major factors that will definitely affect the innovators from developing innovative products.",
+    "rejected": "Therefore, this is one of the major factors that will certainly have an impact on innovators in terms of their development innovations product."
+  },
+  {
+    "entry_number": 30,
+    "prompt": "Fix errors in this text: For example, the marketing department thinks that the innovated products are not relevant to what the company is selling.",
+    "chosen": "For example, the marketing department thinks that the innovative products are not relevant to what the company is selling.",
+    "rejected": "For example, the marketing department thinks that innovative products are not as important a part of the business as it was before."
+  },
+  {
+    "entry_number": 31,
+    "prompt": "Improve the grammaticality of this sentence: They have to obtain fund from the investors in order to develop their innovation prototypes and require help from the marketing department to have their innovation products for sales in the marketplace.",
+    "chosen": "They have to obtain funds from investors in order to develop their innovative prototypes and require help from the marketing department to have their innovation products for sale in the marketplace.",
+    "rejected": "They need to acquire funding from investors in order to develop their innovative inventions, requiring them to work with the marketing department to have their innovative products sold on the market"
+  },
+  {
+    "entry_number": 32,
+    "prompt": "Make the sentence fluent: Engineering design is defined as a process that brings ideas or theories into physical representations which satisfies human needs.",
+    "chosen": "Engineering design is defined as a process that brings ideas or theories into physical representations, which satisfy human needs.",
+    "rejected": "Engineering Design is defined as a process that brings ideas, or theories, to be put in physical forms by satisfying humans' needs."
+  },
+  {
+    "entry_number": 33,
+    "prompt": "Remove all grammatical errors from this text: Because Engineering designs are always related to real problem, during the five processes, the obstacles they face are more than theories and calculations on paper.",
+    "chosen": "Because engineering designs are always related to real problems, during the five processes, the obstacles they face are more than theoretical calculations on paper.",
+    "rejected": "Because engineering design is always related to a real-world problem; during the five processes, the obstacles they face are greater than theoretical knowledge in paper or formulas."
+  },
+  {
+    "entry_number": 34,
+    "prompt": "Fix the grammatical mistakes: Political issues usually become realized in the beginning and final steps, especially in the last step.",
+    "chosen": "Political issues usually become realized in the beginning and final stages, especially in the last step.",
+    "rejected": "Political issues often get realized at the beginning of their resolution but they can also be realized later on through a final step"
+  },
+  {
+    "entry_number": 35,
+    "prompt": "Fix grammatical errors: In the last step of design, political issues also disturb the process significantly.",
+    "chosen": "In the last step of design, political issues also disturb the process significantly.",
+    "rejected": "In the final stage of design, politics may also disrupt the process significantly."
+  },
+  {
+    "entry_number": 36,
+    "prompt": "Make the sentence fluent: However, when the design had been carried out for a few weeks, it was stopped.",
+    "chosen": "However, when the design had been carried out for a few weeks, it was stopped.",
+    "rejected": "However, when the design has been carried out for a few weeks, it is stopped;"
+  },
+  {
+    "entry_number": 37,
+    "prompt": "Fix grammaticality: It affects the analyzing and test step most seriously though it can affect almost every step of design work.",
+    "chosen": "It affects the analysis and testing step most seriously, though it can affect almost every step of design work.",
+    "rejected": "It affects analysis and testing, but it could also affect nearly every step of design work."
+  },
+  {
+    "entry_number": 38,
+    "prompt": "Fix grammatical errors: Besides, the lack of financial support or sudden stop in the financial support may even lead to the incomplete of a project.",
+    "chosen": "Besides, the lack of financial support or sudden stops in the financial support may even lead to the complete failure of a project.",
+    "rejected": "Besides, there is also an absence of financial support and/or a sudden stoppage in funding for a project"
+  },
+  {
+    "entry_number": 39,
+    "prompt": "Grammar improvements: Humankind always has needs and demands because people want to lead more comfortable and easier life.",
+    "chosen": "Humankind always has needs and demands because people want to lead a more comfortable and easier life.",
+    "rejected": "Humankind constantly wants to have needs and demands because people want to live in a better, happier, and easier way."
+  },
+  {
+    "entry_number": 40,
+    "prompt": "Fix the grammatical mistakes: There are various fields which engineering plays an important role in our daily lives, such as entertainment, healthcare, transportation, real estate, and so on.",
+    "chosen": "There are various fields that engineering plays an important role in our daily lives, such as entertainment, healthcare, transportation, real estate, and so on.",
+    "rejected": "There are several different fields that engineering has played a significant part in our daily lives, including entertainment, healthcare, transportation, real estate, and so on."
+  },
+  {
+    "entry_number": 41,
+    "prompt": "Improve the grammaticality: The cost of raw materials has risen significantly from the year 2003 to year 2009 and it has affected the electronics supply chain.",
+    "chosen": "The cost of raw materials has risen significantly from the year 2003 to the year 2009, and it has affected the electronics supply chain.",
+    "rejected": "The cost of raw materials has increased significantly in the years between 2003 and 2009, and this has had an effect on the electronics supply chain."
+  },
+  {
+    "entry_number": 42,
+    "prompt": "Make the sentence grammatical: Hence designs that need large amount of gold may not be feasible.",
+    "chosen": "Hence, designs that need a large amount of gold may not be feasible.",
+    "rejected": "Hence, designs that are needed to have a lot of gold may not be feasible."
+  },
+  {
+    "entry_number": 43,
+    "prompt": "Fix the grammatical mistakes: However, if the engineers were to stick to their original design, the cost of the end product will be high.",
+    "chosen": "However, if the engineers had to stick to their original design, the cost of the end product would be high.",
+    "rejected": "However, if the engineers are to adhere to their original design, the cost of the end product would be very expensive."
+  },
+  {
+    "entry_number": 44,
+    "prompt": "Update to remove grammar errors: Hazardous product can tarnish the reputation of the company and sometimes even result in the loss of innocent lives.",
+    "chosen": "Hazardous products can tarnish the reputation of the company, and sometimes, it may even result in the loss of innocent lives.",
+    "rejected": "Hazardous products can tarnish a company's reputation, which may also ruin innocent lives"
+  },
+  {
+    "entry_number": 45,
+    "prompt": "Fix disfluencies in the sentence: Thus it is very important for engineers to do repeated trial test of the product to ensure that it is free of faults.",
+    "chosen": "Thus, it is very important for engineers to do repeated trials of the product to ensure that it is free from faults.",
+    "rejected": "Thus, it is very important for engineers to do a repeatable trial testing of the product to confirm that it is free from faults."
+  },
+  {
+    "entry_number": 46,
+    "prompt": "Fix grammatical errors: As we understand the relevance and importance of engineering design, we will come to realize that in reality there are several factors that preventing the progress of engineering design.",
+    "chosen": "As we understand the relevance and importance of engineering design, we will come to realize that in reality, there are several factors that prevent the progress of engineering design.",
+    "rejected": "As we understand the relevance and importance of engineering design, we will come to realize that these factors have prevented the progression of engineering design."
+  },
+  {
+    "entry_number": 47,
+    "prompt": "Fix grammatical mistakes in this sentence: In Singapore, there is only a certain fixed amount in the country's national budget allocated of the research and development sector.",
+    "chosen": "In Singapore, there is only a certain fixed amount in the country's national budget allocated for the research and development sector.",
+    "rejected": "In Singapore, there are only a certain number of funds allocated to the research and development sector within the country's national budget allocation."
+  },
+  {
+    "entry_number": 48,
+    "prompt": "Remove grammatical mistakes: Some feel that in these tough economical times, it is wiser to splurge the money on restructuring the economy or providing more incentives to instill entrepreneurship, rather than investing in research in engineering design.",
+    "chosen": "Some feel that in these tough economic times, it is wiser to splurge on restructuring the economy or providing more incentives to instill entrepreneurship rather than invest in research in engineering design.",
+    "rejected": "Some felt that in this tough economic times, it is wiser to spend the money on restructuring the economy or provide more incentives for encouraging entrepreneurship instead of investinemethodology."
+  },
+  {
+    "entry_number": 49,
+    "prompt": "Fix grammaticality of the sentence: Secondly, the amount of creative people in Singapore is small, which may be a major reason for the hampering of innovative engineering design.",
+    "chosen": "Secondly, the number of creative people in Singapore is small, which may be a major reason for the hampering of innovative engineering design.",
+    "rejected": "Secondly, the number of creative people in Singapore is smaller than that found in other countries; this may be a major reason for the hampering of innovative engineering designs."
+  },
+  {
+    "entry_number": 50,
+    "prompt": "Fix grammatical errors: The population of Singapore is scarce compared to other countries in the region.",
+    "chosen": "The population of Singapore is scarce compared to other countries in the region.",
+    "rejected": "The population of Singapore is very sparse compared to other countries in the region."
+  },
+  {
+    "entry_number": 51,
+    "prompt": "Grammar improvements: The impact on having a limited amount of creative people has resulted in Singapore having to resort to buying foreign-based engineering design equipment from overseas.",
+    "chosen": "The impact on having a limited number of creative people has resulted in Singapore having to resort to buying foreign-based engineering design equipment from overseas.",
+    "rejected": "The impact of the lack of creativity on have had to result in Singapore being to resort to buying foreign-based engineering design equipment from abroad"
+  },
+  {
+    "entry_number": 52,
+    "prompt": "Improve the grammar of this text: However, the 3 M researchers found out this failed bonding agent was suitable for attaching notes which satisfy many people's needs.",
+    "chosen": "However, the 3 M researchers found out that this failed bonding agent was suitable for attaching notes which satisfy many people's needs.",
+    "rejected": "However, the 3 researchers found that the 3 M scientists had discovered this failure bonding agent is a good choice for attaching notes which satisfy many people's needs."
+  },
+  {
+    "entry_number": 53,
+    "prompt": "Fix grammar in the sentence: Thus post-it note was invented from this idea.",
+    "chosen": "Thus, the post-it note was invented from this idea.",
+    "rejected": "Thus, the Post-It Note is an invention from this idea."
+  },
+  {
+    "entry_number": 54,
+    "prompt": "Make the sentence fluent: In this manner, many other serendipitous technologies have been discovered and solved many irrelevant problems.",
+    "chosen": "In this manner, many other serendipitous technologies have been discovered and solved many irrelevant problems.",
+    "rejected": "In this manner, several other serendipitous technological advances have been discovered and solved many of their related problems."
+  },
+  {
+    "entry_number": 55,
+    "prompt": "Remove grammar mistakes: Thus, it is fair to say that either conventional technology or serendipitous technology is stimulated by the realization of problems and needs.",
+    "chosen": "Thus, it is fair to say that either conventional technology or serendipitous technology is stimulated by the realization of problems and needs.",
+    "rejected": "Thus, it is fair to say that either conventional technology or serendipitous technologies are stimulated by reality's realization of problems and needs."
+  },
+  {
+    "entry_number": 56,
+    "prompt": "Fix grammaticality in this sentence: If the refrigerator was remained as it was invented in 1910s and no further development has been made to improve its quality, the refrigerator would just be an unsuccessful invention due to its low efficiency and high cost.",
+    "chosen": "If the refrigerator had remained as it was invented in 1910s and no further development has been made to improve its quality, the refrigerator would just be an unsuccessful invention due to its low efficiency and high cost.",
+    "rejected": "If the refrigerator had remained unchanged since 1910s-and there have not been any further improvements to improve its quality; the refrigerator would simply be a useless invention because of its low efficiency and high costs"
+  },
+  {
+    "entry_number": 57,
+    "prompt": "Fix grammar in the sentence: How other people get to know your products and been convinced to use them.",
+    "chosen": "How other people get to know your products, and they are convinced to use them.",
+    "rejected": "How others can tell you what their products are, be persuaded to use them."
+  },
+  {
+    "entry_number": 58,
+    "prompt": "Fix disfluencies in the sentence: Research is usually based on certain organizations and it requires some time, funds and resources before the researchers can finally obtain the expected results.",
+    "chosen": "Research is usually based on certain organizations and it requires a certain amount of time, funds, and resources before the researchers can finally obtain the expected results.",
+    "rejected": "Research often involves a specific organization, which requires that research needs to be done for at least a few years prior before the researchers can finally obtain the expected results."
+  },
+  {
+    "entry_number": 59,
+    "prompt": "Fix grammaticality in this sentence: I believe these problems obstructing engineering innovation will be solved in the near future.",
+    "chosen": "I believe these problems obstructing engineering innovation will be solved in the near future.",
+    "rejected": "I believe that these problems are blocking engineering innovation and they will eventually be solved in the near future."
+  },
+  {
+    "entry_number": 60,
+    "prompt": "Grammar improvements: Understanding the differences and similarities between such a path that inventors take and conventionally generated technologies will help us to better appreciate their efforts & the hardships they had to go through in their endeavours.",
+    "chosen": "Understanding the differences and similarities between such a path that inventors take and conventional technologies will help us to better appreciate their efforts & hardships they have to go through in their endeavours.",
+    "rejected": "Understanding the differences and similarities between these paths, which inventors have taken and conventional technology has been created for, will help us to understand their efforts & the hardships they have faced during their endeavors."
+  },
+  {
+    "entry_number": 61,
+    "prompt": "Fix grammaticality in this sentence: These planes are not only a mark of development in speed but also in agility.",
+    "chosen": "These planes are not only a mark of development in speed but also in agility.",
+    "rejected": "These airplanes are not just the marks of progress in speed, but they also have an important role as markers for development in speed and agility."
+  },
+  {
+    "entry_number": 62,
+    "prompt": "Fix grammatical errors: Most importantly, we see that these needs of the military were a driving force behind the development and enhancement of the aircraft.",
+    "chosen": "Most importantly, we see that these needs of the military were a driving force behind the development and enhancement of the aircraft.",
+    "rejected": "Most importantly, we can see that this need for the military has been a driving force in the development and enhancement of aircraft."
+  },
+  {
+    "entry_number": 63,
+    "prompt": "Fix the grammatical mistakes: Secondly, social factors guided the growth of planes.",
+    "chosen": "Secondly, social factors have guided the growth of planes.",
+    "rejected": "Secondly, social factors have been a guiding force for the growth of airplanes."
+  },
+  {
+    "entry_number": 64,
+    "prompt": "Fix grammar in the sentence: It is noticeable that the size of commercial planes increased over the years in the response to meet the rise in global travelers.",
+    "chosen": "It is noticeable that the size of commercial planes has increased over the years in response to the rise in global travelers.",
+    "rejected": "It was noticed that the size of commercial planes has increased, and this reaction towards meeting rising global travelers."
+  },
+  {
+    "entry_number": 65,
+    "prompt": "Fix grammar errors: These modifications were indeed not possible if not for the varying social as well as military requirements during different eras.",
+    "chosen": "These modifications were indeed not possible if not for the varying social and military requirements during different eras.",
+    "rejected": "These modifications, which are certainly not possible otherwise, would have been impossible without these varying societal and military requirements during different eras."
+  },
+  {
+    "entry_number": 66,
+    "prompt": "Fix errors in this text: When there is a need for something, a technology is create to solve the problem.",
+    "chosen": "When there is a need for something, a technology is created to solve the problem.",
+    "rejected": "When there is a need for something, a technological solution can be created to solve that problem."
+  },
+  {
+    "entry_number": 67,
+    "prompt": "Improve the grammaticality: This implies that automobile companies had to pull in large sums of money for research and development work to create and promote the sales of such cars.",
+    "chosen": "This implies that automobile companies had to pull in large sums of money for research and development work to create and promote the sale of such cars.",
+    "rejected": "This implies that automobile companies have to pull in a lot of capital from research and development work to make up for lost savings through depreciation during the years after they were founded"
+  },
+  {
+    "entry_number": 68,
+    "prompt": "Fix grammar in the sentence: However the cost to finance this project will be high as much research and development have to be done.",
+    "chosen": "However, the cost to finance this project will be high as much research and development has to be done.",
+    "rejected": "However, the costs of financing this project are high because so many researchers and developers have to go through it."
+  },
+  {
+    "entry_number": 69,
+    "prompt": "Fix grammaticality: As mentioned, the Inconvenient Truth has shown that there is a direct link between carbon emissions and the rising temperatures of the Earth.",
+    "chosen": "As mentioned, the Inconvenient Truth has shown that there is a direct link between carbon emissions and the rising temperatures of the Earth.",
+    "rejected": "As it was mentioned in the Inconsistent Truth, The Inconvenient Truth shows how carbon dioxide can be directly linked to global warming by raising temperature levels on Earth."
+  },
+  {
+    "entry_number": 70,
+    "prompt": "Fix grammatical errors in this sentence: There many alternative source of energy can be used and applied in our life, such as solar energy, light energy, wind energy, water power and so on.",
+    "chosen": "There are many alternative sources of energy that can be used and applied in our lives, such as solar energy, light energy, wind energy, water power, and so on.",
+    "rejected": "There are numerous alternatives to the use of energy sources; these include solar energy, light energy, wind energy, water power, and so on."
+  },
+  {
+    "entry_number": 71,
+    "prompt": "Fix grammar: The 21st century is faced with a severe problem of global energy shortage.",
+    "chosen": "The 21st century is facing a severe problem of global energy shortage.",
+    "rejected": "The 21st century has been facing a severe problem with the global energy shortage."
+  },
+  {
+    "entry_number": 72,
+    "prompt": "Fix disfluencies in the sentence: The rate of energy consumption by human is much higher than what nature is able to produce.",
+    "chosen": "The rate of energy consumption by humans is much higher than what nature can produce.",
+    "rejected": "The amount of energy consumed by humans has been greatly reduced compared with that produced by nature, so it's very unlikely that nature can produce enough energy for us"
+  },
+  {
+    "entry_number": 73,
+    "prompt": "Fix grammar: Therefore, the last decade has witnessed the increasing energy price due to insufficient supply of energy.",
+    "chosen": "Therefore, the last decade has witnessed an increase in the energy price due to insufficient supply of energy.",
+    "rejected": "Therefore, the last decade has seen an increase in the energy prices due to a decreasing supply of energy."
+  },
+  {
+    "entry_number": 74,
+    "prompt": "Fix grammatical errors in this sentence: In response to energy shortage, engineers design more efficient products and systems.",
+    "chosen": "In response to the energy shortage, engineers design more efficient products and systems.",
+    "rejected": "In response to the energy shortage, engineers have designed even better products and systems"
+  },
+  {
+    "entry_number": 75,
+    "prompt": "Fix grammar in this sentence: Natural movements such as tide, wind and wave can all be used for generating power.",
+    "chosen": "Natural movements such as the tides, wind, and waves can all be used to generate power.",
+    "rejected": "Natural movement such as the tides, winds, and waves can also be used to generate electricity."
+  },
+  {
+    "entry_number": 76,
+    "prompt": "Fix grammaticality of the sentence: It shows that nuclear power may gradually replace traditional oil and petroleum.",
+    "chosen": "It shows that nuclear power may gradually replace traditional oil and petroleum.",
+    "rejected": "It shows that nuclear power could eventually be replaced by traditional oil and petroleum."
+  },
+  {
+    "entry_number": 77,
+    "prompt": "Fix errors in this text: Although it seems very optimistic that many potential alternative energy resources can be found, there are, in fact, other economic and social constrains faced by engineers.",
+    "chosen": "Although it seems very optimistic that many potential alternative energy resources can be found, there are, in fact, other economic and social constraints faced by engineers.",
+    "rejected": "Although it seems to be quite an optimistic statement, the number of potential alternative energy resources is still too high for engineers."
+  },
+  {
+    "entry_number": 78,
+    "prompt": "Fix disfluencies in the sentence: To conclude, engineering design process can be applied to help solve the current problem of global energy shortage.",
+    "chosen": "To conclude, the engineering design process can be applied to help solve the current problem of global energy shortage.",
+    "rejected": "To conclude, an engineering design process can be used to help solve a current problem with the global energy shortage."
+  },
+  {
+    "entry_number": 79,
+    "prompt": "Fix grammatical errors in this sentence: Technologies are always developed to cater certain needs of people, whether to provide better methods of doing things or to develop tools that facilitate working and living.",
+    "chosen": "Technologies are always developed to cater to certain needs of people, whether to provide better methods of doing things or to develop tools that facilitate working and living.",
+    "rejected": "Technologies have been constantly developed to cater the needs of people regardless of what they do; whether it is providing better methods for doing things or developing tools that facilitate work and living."
+  },
+  {
+    "entry_number": 80,
+    "prompt": "Fix grammar: Virtual technology has been designed with a series of unique properties to address the observed social needs by engaging a large user population.",
+    "chosen": "Virtual technology has been designed with a series of unique properties to address the observed social needs by engaging a large user population.",
+    "rejected": "Virtual technology has been designed with a series of unique properties that addresses the observed social need among a large user population."
+  },
+  {
+    "entry_number": 81,
+    "prompt": "Improve the grammaticality of this text: New technologies had made people realize the underlying economic opportunities beyond geographic barriers and national boundaries.",
+    "chosen": "New technologies have made people realize the underlying economic opportunities beyond geographical barriers and national boundaries.",
+    "rejected": "New technologies have made people realize that these underlying economic opportunities are outside geographical borders and national boundaries"
+  },
+  {
+    "entry_number": 82,
+    "prompt": "Fix grammaticality of the sentence: Catering to this need, a series of solutions has been developed based on virtual technology.",
+    "chosen": "Catering to this need, a series of solutions have been developed based on virtual technology.",
+    "rejected": "Catering for this needs is a series of solutions have been developed based on virtual technologies."
+  },
+  {
+    "entry_number": 83,
+    "prompt": "Grammar improvements: Apart from the demands from business and education, other factors have also shaped the development of virtual technology and solutions have been designed to meet the needs.",
+    "chosen": "Apart from the demands from business and education, other factors have also shaped the development of virtual technology and solutions have been designed to meet the needs.",
+    "rejected": "Apart from the demand for business and education, other factors have also shaped the development of virtual technologies and solutions has been designed to satisfy these needs"
+  },
+  {
+    "entry_number": 84,
+    "prompt": "Fix grammaticality: The development of virtual technology is shaped by social factors such as the business environment, educational needs and military demands.",
+    "chosen": "The development of virtual technology is shaped by social factors such as the business environment, educational needs, and military demands.",
+    "rejected": "The development of virtual technology has been shaped by these social factors, including the business environment, education needs, and military demands"
+  },
+  {
+    "entry_number": 85,
+    "prompt": "Fix grammar errors: However, problems inevitably generate and affect the process of innovation due to the improper strategies or methods.",
+    "chosen": "However, problems inevitably generate and affect the process of innovation due to improper strategies or methods.",
+    "rejected": "However, these problems inevitably arise and will effect the process of innovation due to improper strategy or method."
+  },
+  {
+    "entry_number": 86,
+    "prompt": "Fix grammatical errors in this sentence: In other words, these designs are produced without adequate market survey, so they turn out to be unwelcomed among public.",
+    "chosen": "In other words, these designs are produced without an adequate market survey, so they turn out to be unwelcoming among the public.",
+    "rejected": "In other words, these designs have not been properly surveyed by the government; therefore, they turn out to be uninviting among the public."
+  },
+  {
+    "entry_number": 87,
+    "prompt": "Fix grammar: Though the designs are products of fantastic conception, they become useless as rubbish once out of market.",
+    "chosen": "Though the designs are products of fantastic conception, they become useless as rubbish once out of the market.",
+    "rejected": "Though the design is a product of a wonderful concept; it becomes useless and waste after being out of the market."
+  },
+  {
+    "entry_number": 88,
+    "prompt": "Fix grammar errors in this sentence: After the policy of reform and opening-up, Chinese government has long been encouraging people to make varieties of innovations.",
+    "chosen": "After the policy of reform and opening-up, the Chinese government has long been encouraging people to make varieties of innovations.",
+    "rejected": "After the policies of reform and opening up, China's government had a long time being encouraged to make variety of innovation."
+  },
+  {
+    "entry_number": 89,
+    "prompt": "Fix errors in this text: As long as the application documents meet the format, the patent will be approved.",
+    "chosen": "As long as the application documents meet the format, the patent will be approved.",
+    "rejected": "As long as the application documentation meets the required format, the patent will be granted."
+  },
+  {
+    "entry_number": 90,
+    "prompt": "Update to remove grammar errors: Normally the lawsuits of patent infringement can be settled out of court due to the high cost and complicated procedures.",
+    "chosen": "Normally, the lawsuits of patent infringement can be settled out of court due to the high cost and complicated procedures.",
+    "rejected": "Normally, litigation in a lawsuit for patent infringement will usually take place at a trial or arbitration center."
+  },
+  {
+    "entry_number": 91,
+    "prompt": "Improve the grammar of this text: As a developing country, now China is facing problems on many fields.",
+    "chosen": "As a developing country, now China is facing problems in many fields.",
+    "rejected": "As a developing country, it is currently faced with problems in many areas."
+  },
+  {
+    "entry_number": 92,
+    "prompt": "Remove grammatical mistakes: China's education is typical exam-oriented education.",
+    "chosen": "China's education is a typical exam-oriented education.",
+    "rejected": "China has a traditional education system, which uses exams to evaluate students' knowledge and skills."
+  },
+  {
+    "entry_number": 93,
+    "prompt": "Fix grammar errors in this sentence: However, the policy of engineering and industry cannot meet the needs.",
+    "chosen": "However, the policy of engineering and industry cannot meet the needs.",
+    "rejected": "However, it is not possible for engineers to provide a solution without considering their needs."
+  },
+  {
+    "entry_number": 94,
+    "prompt": "Fix grammar: In the technological age, since independent innovation is very important to a nation's development, society needs the people with innovative talent.",
+    "chosen": "In the technological age, since independent innovation is very important to a nation's development, society needs people with innovative talents.",
+    "rejected": "In the technologically advanced age of independence, because independent innovators are very important for a nation's development, society needs people with an innovative talents."
+  },
+  {
+    "entry_number": 95,
+    "prompt": "Fix grammar in this sentence: If engineers do not come up with new ideas, they cannot find best solution for the problems.",
+    "chosen": "If engineers do not come up with new ideas, they cannot find the best solution for the problems.",
+    "rejected": "If engineers don't come up with new ideas and solve the problem, then it will be impossible to find a good solution for them."
+  },
+  {
+    "entry_number": 96,
+    "prompt": "Fix grammaticality: As a result, the engineering design would be in slow progress and there are still a lot of complex problems left unsolved.",
+    "chosen": "As a result, the engineering design would be slow progress, and there are still a lot of complex problems left unsolved.",
+    "rejected": "As a result, the engineering design would have been slowed down by several years until it had reached its full speed. There were still a lot of complexities to solve before they could be solved fast enough for engineers' needs"
+  },
+  {
+    "entry_number": 97,
+    "prompt": "Fix the grammatical mistakes: Out of 10 dollars made, this factory only have 1 dollar, while the Japanese company gets 9.",
+    "chosen": "Out of 10 dollars made, this factory only has 1 dollar, while the Japanese company gets 9.",
+    "rejected": "Out Of 10 dollars made by this factory, this factory has only got 1 dollar; and the Japanese company gets 9."
+  },
+  {
+    "entry_number": 98,
+    "prompt": "Fix disfluencies in the sentence: The reason why this factory gets so little is that the design belongs to that Japanese company.",
+    "chosen": "The reason why this factory gets so little is that the design belongs to that Japanese company.",
+    "rejected": "The reason for this factory getting so little is because of its design belonged to that Japanese company."
+  },
+  {
+    "entry_number": 99,
+    "prompt": "Fix grammatical errors in this sentence: Therefore, very little money is devoted to design process for innovation and these companies only repeat this low-end production circle.",
+    "chosen": "Therefore, very little money is devoted to the design process for innovation, and these companies only repeat this low-end production cycle.",
+    "rejected": "Therefore, the very little money has been dedicated to the design processes of innovation, and these companies only replicate this low-end production cycle."
   }
 ]

@@ -9,20 +9,21 @@
     "max_seq_length": 256,
     "seed": 42,
     "model_name": "HuggingFaceTB/SmolLM-135M",
-    "gradient_checkpointing": false
+    "gradient_checkpointing": false,
+    "flash_attention_2": false
   },
   "metrics": {
-    "bleu_score": 0.4737031566205659,
-    "train_loss": 0.4501135726128855,
-    "eval_loss": 0.9232049584388733,
-    "training_time": 109.50802183151245,
+    "bleu_score": 0.4779586315000823,
+    "train_loss": 0.4501394210323211,
+    "eval_loss": 0.9232665300369263,
+    "training_time": 56.40709066390991,
     "train_samples": 19823,
     "test_samples": 485
   },
   "system": {
-    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
     "cuda_version": "12.4",
     "pytorch_version": "2.5.1+cu124",
-    "timestamp": "2025-08-05T12:41:41.738608"
+    "timestamp": "2025-08-10T04:57:59.375180"
   }
 }

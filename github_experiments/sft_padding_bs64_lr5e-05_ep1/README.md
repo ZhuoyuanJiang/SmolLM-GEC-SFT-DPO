@@ -4,8 +4,8 @@ library_name: transformers
 model_name: sft_padding_bs64_lr5e-05_ep1
 tags:
 - generated_from_trainer
-- sft
 - trl
+- sft
 licence: license
 ---
 

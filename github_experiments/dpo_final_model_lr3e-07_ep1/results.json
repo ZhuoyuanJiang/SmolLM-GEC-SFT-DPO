@@ -1,7 +1,7 @@
 {
   "config": {
     "method": "dpo",
-    "sft_model_path": "experiments/sft_padding_bs16_lr8e-05_ep1/final_model",
+    "sft_model_path": "experiments/sft_padding_bs32_lr8e-05_ep1/final_model",
     "learning_rate": 3e-07,
     "beta": 0.1,
     "num_epochs": 1,
@@ -13,18 +13,18 @@
     "gradient_checkpointing": false
   },
   "metrics": {
-    "bleu_score": 0.5008787737314653,
-    "train_loss": 0.582843601590863,
-    "eval_loss": 0.48852214217185974,
-    "training_time": 1088.4181425571442,
-    "train_samples": 16903,
-    "eval_samples": 1879,
+    "bleu_score": 0.4990428073878363,
+    "train_loss": 0.5140109203978261,
+    "eval_loss": 0.39977627992630005,
+    "training_time": 578.9514214992523,
+    "train_samples": 17140,
+    "eval_samples": 1905,
     "test_samples": 485
   },
   "system": {
-    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
     "cuda_version": "12.4",
     "pytorch_version": "2.5.1+cu124",
-    "timestamp": "2025-08-05T16:53:08.111273"
+    "timestamp": "2025-08-10T05:51:50.531080"
   }
 }

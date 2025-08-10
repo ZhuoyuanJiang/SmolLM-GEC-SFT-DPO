@@ -1,15 +1,15 @@
 ---
 base_model: HuggingFaceTB/SmolLM-135M
 library_name: transformers
-model_name: sft_packing_bs16_lr3e-05_ep1
+model_name: sft_dataset_packing_bs16_lr3e-05_ep1
 tags:
 - generated_from_trainer
-- trl
 - sft
+- trl
 licence: license
 ---
 
-# Model Card for sft_packing_bs16_lr3e-05_ep1
+# Model Card for sft_dataset_packing_bs16_lr3e-05_ep1
 
 This model is a fine-tuned version of [HuggingFaceTB/SmolLM-135M](https://huggingface.co/HuggingFaceTB/SmolLM-135M).
 It has been trained using [TRL](https://github.com/huggingface/trl).
