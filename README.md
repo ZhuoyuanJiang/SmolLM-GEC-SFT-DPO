@@ -36,6 +36,9 @@ conda activate SmolLM_gec_project
 ./run_experiments.sh preference # Create preference dataset
 ./run_experiments.sh dpo        # DPO/IPO experiments
 ./run_experiments.sh results    # Generate final results
+
+# 4. Prepare results for GitHub (after experiments complete)
+./copy_to_github.sh             # Creates github_* directories without model weights
 ```
 
 #### Optional: FlashAttention 2

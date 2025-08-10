@@ -243,6 +243,9 @@ CUDA_VISIBLE_DEVICES=1 python scripts/sft_train.py \
 screen -S smollm_exp
 ./run_experiments.sh
 # Press Ctrl+A+D to detach, screen -r smollm_exp to reattach
+
+# After completion, prepare for GitHub:
+./copy_to_github.sh
 ```
 **Expected Results:**
 - 22 SFT experiments (16 base + 6 batch_packing) → Best model selected
@@ -250,6 +253,7 @@ screen -S smollm_exp
 - 6 DPO/IPO experiments → Final model ranking
 - Results table in `artifacts/experiment_results.csv`
 - Best model in `models/best_gec_model/`
+- GitHub-ready directories in `github_*` folders
 
 #### Option 3: Staged Approach (RECOMMENDED)
 ```bash
@@ -274,6 +278,17 @@ screen -S smollm_exp
 - **Phase 2**: ~19K preference pairs, dataset validation metrics
 - **Phase 3**: 6 additional experiment directories, final model comparison
 - **Phase 4**: Complete results CSV, performance plots, best model selection
+
+### Step 8: Prepare Results for GitHub (IMPORTANT)
+After experiments complete, prepare GitHub-ready directories without large model weights:
+```bash
+# Creates github_* directories with results only (no model weights)
+./copy_to_github.sh
+```
+This creates:
+- `github_experiments/` - All experiment results and configs (~100MB)
+- `github_artifacts/` - Analysis results and plots (~15MB)
+- `github_models/` - Best model configuration (~5MB)
 
 ## ⚠️ Important Storage Notes
 
