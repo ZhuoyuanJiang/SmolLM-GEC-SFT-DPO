@@ -31,8 +31,12 @@ def setup_tokenizer_once(model, tokenizer):
     One-time tokenizer setup for all SFT/DPO/IPO experiments.
     This ensures pad_token != eos_token to fix repetitive generation.
     Also adds [SEP] as a special token for reliable response separation.
+    Maintains dtype consistency after adding tokens.
     """
     print("=== Setting up tokenizer ===")
+
+    # Store the model's dtype for consistency
+    model_dtype = model.dtype
 
     # Check if proper pad token already exists
     if tokenizer.pad_token_id is not None and tokenizer.pad_token_id != tokenizer.eos_token_id:
@@ -46,6 +50,11 @@ def setup_tokenizer_once(model, tokenizer):
         # Resize model embeddings to match tokenizer
         print(f"Resizing model embeddings from {model.config.vocab_size} to {len(tokenizer)}")
         model.resize_token_embeddings(len(tokenizer))
+
+        # Ensure embeddings stay in correct dtype
+        model.get_input_embeddings().weight.data = model.get_input_embeddings().weight.data.to(model_dtype)
+        if hasattr(model, 'lm_head'):
+            model.lm_head.weight.data = model.lm_head.weight.data.to(model_dtype)
 
         # Initialize the new PAD embedding as zeros
         with torch.no_grad():
@@ -70,6 +79,12 @@ def setup_tokenizer_once(model, tokenizer):
         # Resize if needed
         if len(tokenizer) > old_vocab_size:
             model.resize_token_embeddings(len(tokenizer))
+
+            # Ensure embeddings stay in correct dtype
+            model.get_input_embeddings().weight.data = model.get_input_embeddings().weight.data.to(model_dtype)
+            if hasattr(model, 'lm_head'):
+                model.lm_head.weight.data = model.lm_head.weight.data.to(model_dtype)
+
             print(f"Added [SEP] token, new vocab size: {len(tokenizer)}")
 
             # Initialize [SEP] embedding as mean of existing embeddings
@@ -90,6 +105,7 @@ def setup_tokenizer_once(model, tokenizer):
     print(f"  - SEP token: '[SEP]' (ID: {sep_token_id})")
     print(f"  - EOS token: '{tokenizer.eos_token}' (ID: {tokenizer.eos_token_id})")
     print(f"  - PAD != EOS: {tokenizer.pad_token_id != tokenizer.eos_token_id} ✓")
+    print(f"  - Model dtype: {model.dtype}")  # Added dtype check
 
     return model, tokenizer
 

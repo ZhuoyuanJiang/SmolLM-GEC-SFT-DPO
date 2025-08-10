@@ -219,16 +219,23 @@ print('Cache should be in /tmp5/zhuoyuan/hf_cache/')
 
 #### Option 1: Quick Test (RECOMMENDED FIRST)
 ```bash
-# Single small experiment to verify everything works (5-10 minutes)
-CUDA_VISIBLE_DEVICES=1 python scripts/sft_train.py \
+# Test standard padding first (5-10 minutes)
+CUDA_VISIBLE_DEVICES=0 python scripts/sft_train.py \
     --method padding --batch_size 16 --learning_rate 5e-5 \
+    --num_epochs 1
+
+# Test batch_packing support (optional, 5-10 minutes)
+CUDA_VISIBLE_DEVICES=1 python scripts/sft_train.py \
+    --method batch_packing --batch_size 8 --learning_rate 5e-5 \
     --num_epochs 1
 ```
 **Expected Results:**
 - Model downloads to `/tmp5/zhuoyuan/hf_cache/` 
 - Training progress bars and loss decreasing
-- Final model saved to `experiments/sft_padding_bs16_lr5e-5_ep1/`
-- Should complete in 5-10 minutes
+- Final models saved to:
+  - `experiments/sft_padding_bs16_lr5e-5_ep1/` (padding test)
+  - `experiments/sft_batch_packing_bs8_lr5e-5_ep1/` (batch_packing test)
+- Each test should complete in 5-10 minutes
 
 #### Option 2: Full Pipeline (All-in-One)
 ```bash
@@ -238,7 +245,7 @@ screen -S smollm_exp
 # Press Ctrl+A+D to detach, screen -r smollm_exp to reattach
 ```
 **Expected Results:**
-- 12 SFT experiments → Best model selected
+- 22 SFT experiments (16 base + 6 batch_packing) → Best model selected
 - Preference dataset generation (~19K pairs)
 - 6 DPO/IPO experiments → Final model ranking
 - Results table in `artifacts/experiment_results.csv`
@@ -246,9 +253,9 @@ screen -S smollm_exp
 
 #### Option 3: Staged Approach (RECOMMENDED)
 ```bash
-# Phase 1: SFT experiments (~1 hour)
+# Phase 1: SFT experiments (~1.25 hours)
 ./run_experiments.sh sft
-# Check: ls experiments/ should show 12 SFT model directories
+# Check: ls experiments/ should show 22 SFT model directories
 
 # Phase 2: Preference dataset (~30 minutes)  
 ./run_experiments.sh preference
@@ -263,7 +270,7 @@ screen -S smollm_exp
 # Check: artifacts/experiment_results.csv should exist
 ```
 **Expected Results by Phase:**
-- **Phase 1**: 16 experiment directories, best SFT model identified
+- **Phase 1**: 22 experiment directories, best SFT model identified
 - **Phase 2**: ~19K preference pairs, dataset validation metrics
 - **Phase 3**: 6 additional experiment directories, final model comparison
 - **Phase 4**: Complete results CSV, performance plots, best model selection
@@ -338,10 +345,10 @@ pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu124
 ## 📈 Expected Timeline
 
 With 8 GPUs available:
-- SFT experiments: ~45-60 minutes
+- SFT experiments (22): ~60-75 minutes
 - Preference dataset: ~20-30 minutes  
 - DPO/IPO experiments: ~30-45 minutes
-- Total: ~2-3 hours
+- Total: ~2.5-3 hours
 
 ## 🎯 Final Output Locations
 

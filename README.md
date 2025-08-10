@@ -38,15 +38,31 @@ conda activate SmolLM_gec_project
 ./run_experiments.sh results    # Generate final results
 ```
 
+#### Optional: FlashAttention 2
+If you don't have FlashAttention 2 installed, you can add it (verified on RTX 3090, PyTorch 2.5.1+cu124):
+
+```bash
+conda activate SmolLM_gec_project
+conda install -n SmolLM_gec_project -y -c nvidia cuda-toolkit=12.4
+TORCH_CUDA_ARCH_LIST="8.6" python -m pip install -U flash-attn --no-build-isolation
+# Enable in Transformers with: attn_implementation="flash_attention_2"
+```
+
 ## 📋 Experiment Plan
 
-### Phase 1: SFT Experiments (16 total)
+### Phase 1: SFT Experiments (22 total)
 **Padding Method** (10 experiments):
 - Batch sizes: 8, 16, 32, 64 (32×2), 128 (32×4) with gradient accumulation
 - Learning rates: 5e-5, 8e-5
 
-**Packing Method** (6 experiments):
+**Dataset Packing Method** (6 experiments):
+- Document-level packing for efficient training
 - Batch sizes: 4, 8, 16  
+- Learning rates: 3e-5, 5e-5
+
+**Batch Packing Method** (6 experiments):
+- Batch-level packing with padding_free or DataCollatorWithFlattening
+- Batch sizes: 4, 8, 16
 - Learning rates: 3e-5, 5e-5
 
 ### Phase 2: Preference Dataset
@@ -68,10 +84,10 @@ The pipeline will generate:
 
 ## 🕒 Time Estimates
 
-- **Total Time**: ~2-3 hours (with 8 GPU parallelization)
-- SFT experiments: ~45-60 minutes
+- **Total Time**: ~2.5-3 hours (with 8 GPU parallelization)
+- SFT experiments (22): ~60-75 minutes
 - Preference dataset: ~20-30 minutes  
-- DPO/IPO experiments: ~30-45 minutes
+- DPO/IPO experiments (6): ~30-45 minutes
 - Results aggregation: ~2-5 minutes
 
 ## 📁 Project Structure

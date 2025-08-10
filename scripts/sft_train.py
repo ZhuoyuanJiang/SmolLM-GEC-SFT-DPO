@@ -28,8 +28,9 @@ def parse_args():
                         help="Base model to fine-tune")
     
     # Training method
-    parser.add_argument("--method", type=str, required=True, choices=["padding", "packing"],
-                        help="Training method: padding or packing")
+    parser.add_argument("--method", type=str, required=True, 
+                        choices=["padding", "dataset_packing", "batch_packing"],
+                        help="Training method: padding, dataset_packing (document-level), or batch_packing (batch-level)")
     
     # Hyperparameters
     parser.add_argument("--batch_size", type=int, required=True,
@@ -92,6 +93,20 @@ def load_and_prepare_data(args):
     return train_ds, test_ds
 
 
+def check_flash_attention():
+    """Check if Flash Attention 2 is available (optional enhancement)"""
+    try:
+        import flash_attn
+        ver = getattr(flash_attn, "__version__", "unknown")
+        try:
+            major = int(str(ver).split(".")[0])
+            return major >= 2  # True if FA2, False otherwise
+        except:
+            return False
+    except:
+        return False  # FA not installed, which is fine
+
+
 def main():
     args = parse_args()
     
@@ -112,12 +127,38 @@ def main():
     
     # Load model and tokenizer
     print(f"Loading model: {args.model_name}")
-    model = AutoModelForCausalLM.from_pretrained(
-        args.model_name,
-        torch_dtype=torch.float32,
-        device_map="auto",
-        use_cache=False if args.gradient_checkpointing else True
-    )
+    
+    # Check for Flash Attention 2 support for batch_packing
+    fa2_loaded = False
+    model_kwargs = {
+        "torch_dtype": torch.float32,
+        "device_map": "auto",
+        "use_cache": False if args.gradient_checkpointing else True
+    }
+    
+    if args.method == "batch_packing" and check_flash_attention():
+        try:
+            print("Attempting to load model with Flash Attention 2...")
+            model = AutoModelForCausalLM.from_pretrained(
+                args.model_name,
+                attn_implementation="flash_attention_2",
+                **model_kwargs
+            )
+            fa2_loaded = True
+            print("✅ Model loaded with Flash Attention 2")
+        except Exception as e:
+            print(f"⚠️ Flash Attention 2 loading failed: {e}")
+            print("Note: Batch packing will still work using DataCollatorWithFlattening (slower but functional)")
+            print("Falling back to standard attention...")
+            model = AutoModelForCausalLM.from_pretrained(
+                args.model_name,
+                **model_kwargs
+            )
+    else:
+        model = AutoModelForCausalLM.from_pretrained(
+            args.model_name,
+            **model_kwargs
+        )
     
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
     
@@ -132,8 +173,54 @@ def main():
     formatted_train_ds = format_dataset(train_ds, tokenizer)
     formatted_test_ds = format_dataset(test_ds, tokenizer)
     
-    # Configure SFT training
+    # Configure data collator based on method
+    data_collator = None
+    # Extra args for batch_packing
+    extra_training_args = {} # Will be populated based on method
+    
+    if args.method == "padding":
+        data_collator = DataCollatorForCompletionOnlyLM(
+            response_template="[SEP]",
+            tokenizer=tokenizer,
+            mlm=False
+        )
+    elif args.method == "batch_packing":
+        # Configure batch-level packing
+        print("\nConfiguring batch-level packing...")
+        
+        # Try padding_free first (requires newer TRL and ideally FA2)
+        try:
+            # Test if padding_free is supported by creating a test config
+            test_config = SFTConfig(padding_free=True)
+            del test_config
+            
+            # If we get here, padding_free is supported
+            extra_training_args["padding_free"] = True
+            print("✅ Using padding_free=True for efficient batch-level packing")
+            
+        except (TypeError, AttributeError) as e:
+            # padding_free not supported, try DataCollatorWithFlattening
+            print(f"Note: padding_free not supported in your TRL version")
+            print("Trying DataCollatorWithFlattening for batch-level packing...")
+            
+            try:
+                from trl import DataCollatorWithFlattening
+                data_collator = DataCollatorWithFlattening(
+                    tokenizer=tokenizer,
+                    max_length=args.max_seq_length,
+                    pad_to_multiple_of=8,
+                )
+                print("✅ Using DataCollatorWithFlattening for batch-level packing")
+            except ImportError as ie:
+                print(f"\n❌ ERROR: Batch packing failed!")
+                print(f"   DataCollatorWithFlattening not available in your TRL version")
+                print(f"   Please upgrade TRL: pip install -U trl")
+                print(f"   Or use --method padding or --method dataset_packing instead")
+                raise ImportError("Batch packing requires newer TRL version") from ie
+    
+    # Configure SFT training with the extra args
     training_args = SFTConfig(
+        **extra_training_args,  # Include padding_free if set
         # Output & Logging
         output_dir=args.output_dir,
         logging_dir=os.path.join(args.output_dir, "logs"),
@@ -162,7 +249,7 @@ def main():
         
         # Dataset configuration
         max_seq_length=args.max_seq_length,
-        packing=(args.method == "packing"),
+        packing=(args.method == "dataset_packing"),  # Only for dataset-level packing
         dataset_text_field="text",
         remove_unused_columns=True,
         
@@ -184,15 +271,6 @@ def main():
         hub_model_id=f"smollm-gec-{args.method}" if args.push_to_hub else None,
     )
     
-    # Create data collator for padding approach
-    data_collator = None
-    if args.method == "padding":
-        data_collator = DataCollatorForCompletionOnlyLM(
-            response_template="[SEP]",
-            tokenizer=tokenizer,
-            mlm=False
-        )
-    
     # Initialize trainer
     trainer = SFTTrainer(
         model=model,
@@ -210,7 +288,12 @@ def main():
     print(f"Before training: {get_gpu_memory_usage()}")
     
     # Train the model
-    print(f"Starting SFT training with {args.method} method...")
+    print(f"\nStarting SFT training with {args.method} method...")
+    if args.method == "batch_packing":
+        if "padding_free" in extra_training_args and extra_training_args["padding_free"]:
+            print("Using padding_free for efficient batch-level packing")
+        elif data_collator is not None and "DataCollatorWithFlattening" in str(type(data_collator)):
+            print(f"Using {type(data_collator).__name__} for batch-level packing")
     train_result = trainer.train()
     
     # Calculate training time
@@ -249,7 +332,8 @@ def main():
         "max_seq_length": args.max_seq_length,
         "seed": args.seed,
         "model_name": args.model_name,
-        "gradient_checkpointing": args.gradient_checkpointing
+        "gradient_checkpointing": args.gradient_checkpointing,
+        "flash_attention_2": fa2_loaded if args.method == "batch_packing" else False
     }
     
     metrics = {
@@ -270,6 +354,12 @@ def main():
     print("TRAINING SUMMARY")
     print("="*50)
     print(f"Method: {args.method}")
+    if args.method == "batch_packing":
+        print(f"Flash Attention 2: {'Yes' if fa2_loaded else 'No'}")
+        if "padding_free" in extra_training_args and extra_training_args["padding_free"]:
+            print(f"Padding-free: Yes")
+        elif data_collator is not None:
+            print(f"Collator: {type(data_collator).__name__}")
     print(f"Batch Size: {args.batch_size}")
     print(f"Learning Rate: {args.learning_rate}")
     print(f"BLEU Score: {bleu_score:.4f}")

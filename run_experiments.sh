@@ -113,11 +113,11 @@ run_sft_experiments() {
         --base_output_dir "$EXPERIMENTS_DIR" &
     
     CUDA_VISIBLE_DEVICES=6 python "$SCRIPTS_DIR/sft_train.py" \
-        --method packing --batch_size 4 --learning_rate 3e-5 \
+        --method dataset_packing --batch_size 4 --learning_rate 3e-5 \
         --base_output_dir "$EXPERIMENTS_DIR" &
     
     CUDA_VISIBLE_DEVICES=7 python "$SCRIPTS_DIR/sft_train.py" \
-        --method packing --batch_size 4 --learning_rate 5e-5 \
+        --method dataset_packing --batch_size 4 --learning_rate 5e-5 \
         --base_output_dir "$EXPERIMENTS_DIR" &
     
     wait_for_jobs
@@ -127,19 +127,19 @@ run_sft_experiments() {
     
     # Packing experiments
     CUDA_VISIBLE_DEVICES=0 python "$SCRIPTS_DIR/sft_train.py" \
-        --method packing --batch_size 8 --learning_rate 3e-5 \
+        --method dataset_packing --batch_size 8 --learning_rate 3e-5 \
         --base_output_dir "$EXPERIMENTS_DIR" &
     
     CUDA_VISIBLE_DEVICES=1 python "$SCRIPTS_DIR/sft_train.py" \
-        --method packing --batch_size 8 --learning_rate 5e-5 \
+        --method dataset_packing --batch_size 8 --learning_rate 5e-5 \
         --base_output_dir "$EXPERIMENTS_DIR" &
     
     CUDA_VISIBLE_DEVICES=2 python "$SCRIPTS_DIR/sft_train.py" \
-        --method packing --batch_size 16 --learning_rate 3e-5 \
+        --method dataset_packing --batch_size 16 --learning_rate 3e-5 \
         --base_output_dir "$EXPERIMENTS_DIR" &
     
     CUDA_VISIBLE_DEVICES=3 python "$SCRIPTS_DIR/sft_train.py" \
-        --method packing --batch_size 16 --learning_rate 5e-5 \
+        --method dataset_packing --batch_size 16 --learning_rate 5e-5 \
         --base_output_dir "$EXPERIMENTS_DIR" &
     
     # NEW: Padding bs8 and bs16 experiments  
@@ -161,7 +161,38 @@ run_sft_experiments() {
     
     wait_for_jobs
     
-    echo "✅ SFT experiments completed!"
+    # Third batch: batch_packing experiments (6 experiments)
+    echo ""
+    echo "Starting third batch: batch_packing experiments (6 parallel)..."
+    
+    # Smaller batch sizes for batch_packing due to memory efficiency
+    CUDA_VISIBLE_DEVICES=0 python "$SCRIPTS_DIR/sft_train.py" \
+        --method batch_packing --batch_size 4 --learning_rate 3e-5 \
+        --base_output_dir "$EXPERIMENTS_DIR" &
+    
+    CUDA_VISIBLE_DEVICES=1 python "$SCRIPTS_DIR/sft_train.py" \
+        --method batch_packing --batch_size 4 --learning_rate 5e-5 \
+        --base_output_dir "$EXPERIMENTS_DIR" &
+    
+    CUDA_VISIBLE_DEVICES=2 python "$SCRIPTS_DIR/sft_train.py" \
+        --method batch_packing --batch_size 8 --learning_rate 3e-5 \
+        --base_output_dir "$EXPERIMENTS_DIR" &
+    
+    CUDA_VISIBLE_DEVICES=3 python "$SCRIPTS_DIR/sft_train.py" \
+        --method batch_packing --batch_size 8 --learning_rate 5e-5 \
+        --base_output_dir "$EXPERIMENTS_DIR" &
+    
+    CUDA_VISIBLE_DEVICES=4 python "$SCRIPTS_DIR/sft_train.py" \
+        --method batch_packing --batch_size 16 --learning_rate 3e-5 \
+        --base_output_dir "$EXPERIMENTS_DIR" &
+    
+    CUDA_VISIBLE_DEVICES=5 python "$SCRIPTS_DIR/sft_train.py" \
+        --method batch_packing --batch_size 16 --learning_rate 5e-5 \
+        --base_output_dir "$EXPERIMENTS_DIR" &
+    
+    wait_for_jobs
+    
+    echo "✅ All SFT experiments completed (22 total: 16 base + 6 batch_packing)!"
 }
 
 # Function to create preference dataset
@@ -309,11 +340,13 @@ show_time_estimates() {
     echo ""
     echo "⏱️  ESTIMATED TIMES:"
     echo "==================="
-    echo "  SFT experiments:      ~45-60 minutes (parallel)"
+    echo "  SFT experiments (22): ~60-75 minutes (parallel)"
+    echo "    - 16 base experiments"
+    echo "    - 6 batch_packing experiments"
     echo "  Preference dataset:   ~20-30 minutes"
     echo "  DPO/IPO experiments:  ~30-45 minutes (parallel)"
     echo "  Results aggregation:  ~2-5 minutes"
-    echo "  TOTAL:               ~2-3 hours"
+    echo "  TOTAL:               ~2.5-3 hours"
 }
 
 # Main function

@@ -52,15 +52,32 @@ echo ""
 echo "📊 Copying experiment results..."
 echo "--------------------------------"
 
-# SFT experiments
+# SFT experiments (22 total: 10 padding + 6 dataset_packing + 6 batch_packing)
+# Note: Also handles old "sft_packing_*" naming for backward compatibility
+
+# Padding experiments (10)
 for exp in sft_padding_bs8_lr5e-05_ep1 sft_padding_bs8_lr8e-05_ep1 \
            sft_padding_bs16_lr5e-05_ep1 sft_padding_bs16_lr8e-05_ep1 \
            sft_padding_bs32_lr5e-05_ep1 sft_padding_bs32_lr8e-05_ep1 \
            sft_padding_bs64_lr5e-05_ep1 sft_padding_bs64_lr8e-05_ep1 \
-           sft_padding_bs128_lr5e-05_ep1 sft_padding_bs128_lr8e-05_ep1 \
+           sft_padding_bs128_lr5e-05_ep1 sft_padding_bs128_lr8e-05_ep1; do
+    copy_experiment "$exp"
+done
+
+# Dataset packing experiments (6) - try both old and new naming
+for exp in sft_dataset_packing_bs4_lr3e-05_ep1 sft_dataset_packing_bs4_lr5e-05_ep1 \
+           sft_dataset_packing_bs8_lr3e-05_ep1 sft_dataset_packing_bs8_lr5e-05_ep1 \
+           sft_dataset_packing_bs16_lr3e-05_ep1 sft_dataset_packing_bs16_lr5e-05_ep1 \
            sft_packing_bs4_lr3e-05_ep1 sft_packing_bs4_lr5e-05_ep1 \
            sft_packing_bs8_lr3e-05_ep1 sft_packing_bs8_lr5e-05_ep1 \
            sft_packing_bs16_lr3e-05_ep1 sft_packing_bs16_lr5e-05_ep1; do
+    copy_experiment "$exp"
+done
+
+# Batch packing experiments (6) - new method
+for exp in sft_batch_packing_bs4_lr3e-05_ep1 sft_batch_packing_bs4_lr5e-05_ep1 \
+           sft_batch_packing_bs8_lr3e-05_ep1 sft_batch_packing_bs8_lr5e-05_ep1 \
+           sft_batch_packing_bs16_lr3e-05_ep1 sft_batch_packing_bs16_lr5e-05_ep1; do
     copy_experiment "$exp"
 done
 
