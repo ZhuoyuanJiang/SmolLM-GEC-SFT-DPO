@@ -103,12 +103,19 @@ SmolLM-GEC-SFT-DPO/
 │   ├── create_preference_dataset.py  # Preference data generation
 │   ├── dpo_ipo_train.py       # DPO/IPO training
 │   └── aggregate_results.py   # Results analysis
+├── notebook/                   # Educational Jupyter notebooks
+│   ├── README.md              # Detailed guide for all notebooks
+│   ├── SmolLM_SFT_DPO_Full.ipynb           # Complete implementation
+│   ├── SmolLM_SFT_DPO_Part2.ipynb          # Part 2 only (SFT/DPO)
+│   ├── SmolLM_SFT_DPO_Part1_*.ipynb        # Part 1 variants (custom architecture)
+│   └── SmolLM_SFT_DPO_Original.ipynb       # Exercise questions only
 ├── github_experiments/        # All experiment results (GitHub-ready)
 ├── github_artifacts/          # Analysis results & datasets
 ├── github_models/             # Best model configuration
 ├── run_experiments.sh         # Main experiment launcher
 ├── create_training_configs.py # Generate training configurations
-└── copy_to_github.sh          # Prepare GitHub directories
+├── copy_to_github.sh          # Prepare GitHub directories
+└── SmolLM_SFT_DPO_Implementation_Backup_DataCollatorForCompletionOnlyLM.ipynb  # Backup notebook (fallback)
 ```
 
 ## 📂 Repository Contents
@@ -163,6 +170,28 @@ github_models/
 
 ### `scripts/`
 Core training and evaluation scripts with comprehensive docstrings and argument parsing.
+
+### `notebook/` - Educational Jupyter Notebooks
+Interactive notebooks for learning and implementing SFT/DPO training:
+
+**Main Notebooks:**
+- `SmolLM_SFT_DPO_Full.ipynb` - Complete implementation with all parts (recommended starting point)
+- `SmolLM_SFT_DPO_Part2.ipynb` - SFT/DPO implementation only (skip Part 1)
+
+**Part 1 Variants (Custom SmolLM Architecture):**
+- `SmolLM_SFT_DPO_Original.ipynb` - Exercise questions only (no implementation)
+- `SmolLM_SFT_DPO_Part1_Reproduce_Raw.ipynb` - Clean implementation without bug comments
+- `SmolLM_SFT_DPO_Part1_Debug_Exercise_Solution.ipynb` - With bug-focused comments
+- `SmolLM_DPO_SFT_Part1_Debug_Exercise_Solution_Babysit_20250628.ipynb` - Comprehensive step-by-step guide
+
+See `notebook/README.md` for detailed descriptions and learning paths.
+
+**Backup File:**
+`SmolLM_SFT_DPO_Implementation_Backup_DataCollatorForCompletionOnlyLM.ipynb` (project root)
+- Fallback copy of `SmolLM_SFT_DPO_Full.ipynb`
+- Kept at root to avoid breaking anything during reorganization
+- **Always try running notebooks in the `notebook/` folder first**
+- Only use this backup if something goes wrong with the notebooks folder
 
 ### Symlinked Directories (Not in GitHub)
 - `experiments/` → `/tmp5/zhuoyuan/smollm_experiments/experiments`
