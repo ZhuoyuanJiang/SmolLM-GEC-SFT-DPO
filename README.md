@@ -1,8 +1,61 @@
-# SmolLM GEC Hyperparameter Search
+# SmolLM GEC: Style-Preserving Grammar Correction
 
-Comprehensive hyperparameter optimization for SmolLM-135M on grammatical error correction using SFT, DPO, and IPO methods.
+## Project Overview
 
-**📊 Results Included**: This repository contains complete results from 22 experiments achieving BLEU score ~0.50 for grammatical error correction. All configurations, metrics, and analysis are available in the `github_*` directories.
+This project implements **style-preserving grammatical error correction** using SmolLM-135M with Direct Preference Optimization (DPO). Unlike traditional grammar correction models that rewrite entire sentences, our approach makes **minimal, targeted corrections** - fixing only grammatical errors while preserving your original writing style, vocabulary, and voice.
+
+**Key Achievement**: ~0.50 BLEU score with only 135M parameters, trained on 22+ SFT experiments and 6 DPO/IPO experiments using ~19,000 preference pairs that teach the model to prefer minimal edits over rewrites.
+
+## Motivation
+
+I needed a grammar correction tool that would fix my mistakes without changing how I write. Previous large language models (GPT, Claude, etc.) tend to rewrite sentences entirely, making text sound generic and "AI-generated." This is problematic for professionals who need grammatical accuracy while maintaining their unique voice - lawyers drafting legal documents with precise terminology, academics preserving scholarly tone, or anyone wanting authentic writing that doesn't trigger AI detection. The solution: train a small, efficient model that learns to make minimal corrections through preference learning, understanding something like "using → use" is better than rewriting the entire sentence.
+
+## Example: Style-Preserving vs. Over-Correction
+
+```
+Original (with error):
+"As the number of people grows, the need of habitable environment is
+unquestionably essential."
+                                         ↑
+                                 grammatical error
+
+✅ Our Model (Style-Preserving):
+"As the number of people grows, the need for a habitable environment is
+unquestionably essential."
+                                         ↑
+                            Only fixes "of" → "for"
+
+❌ Typical Model (Over-Correction):
+"As population growth continues to grow, the necessity for a habitable
+environment becomes undeniably essential."
+                            ↑
+    Completely rewrites: changes vocabulary, structure, and tone
+```
+
+## Real-World Applications
+
+**Legal Industry**: Lawyers drafting contracts, briefs, and legal opinions need precise grammar while maintaining rigorous, formal writing style. Over-correction can alter legal language nuances and change the meaning of carefully crafted clauses.
+
+**ESL/EFL Education**: Language learners need grammar feedback that doesn't rewrite their original ideas. Teachers can differentiate between grammatical errors (which need correction) and stylistic choices (which reflect the student's developing voice).
+
+**Other Applications**: Any domain requiring voice preservation - academic writing, technical documentation, business communications, developer tools, content quality assurance, and professional communications where authenticity matters.
+
+## Technical Highlights
+
+**Custom SmolLM Architecture Implementation**: This project includes a from-scratch implementation of the SmolLM architecture, demonstrating deep understanding of transformer-based language models. The implementation is documented in interactive Jupyter notebooks (see `notebook/` folder) with multiple versions ranging from clean code to comprehensive step-by-step guides. This showcases not just fine-tuning capabilities, but foundational knowledge of model architecture, attention mechanisms, and implementation details.
+
+**Key Technical Contributions**:
+- Systematic comparison of efficient training methods for small models (padding, dataset packing, batch packing)
+- Novel preference dataset generation for style-preserving grammar correction (~19K pairs using edit distance)
+- Empirical evidence that 135M parameter models can achieve competitive GEC performance (BLEU ~0.50)
+- Complete hyperparameter search with documented results (22 SFT + 6 DPO/IPO experiments)
+- Reproducible training pipeline for resource-constrained environments
+
+**Beyond Simple Fine-Tuning**: This repository demonstrates the complete pipeline from architecture implementation to preference learning optimization, providing both educational value and production-ready training scripts.
+
+---
+
+**📊 Results Included**: This repository contains complete results from 28 experiments (22 SFT + 6 DPO/IPO) achieving BLEU score ~0.50 for grammatical error correction. All configurations, metrics, and analysis are available in the `github_*` directories.
 
 ## 🚀 Quick Start
 
@@ -320,3 +373,7 @@ If you use this hyperparameter search framework, please cite:
   note={Comprehensive SFT/DPO/IPO hyperparameter search}
 }
 ```
+
+## 🙏 Acknowledgments
+
+Special thanks to **Nima Tajbakhsh** (@ Nvidia) for providing valuable guidance on packing methods and other technical aspects of this project.
