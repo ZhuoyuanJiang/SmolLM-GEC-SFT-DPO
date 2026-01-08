@@ -1,3 +1,8 @@
+# Original environment from Aug 4, 2025 (base dependencies only)
+# For the full training environment with CUDA toolkit and flash_attn, use environment_20260108.yml
+# The conda environment "SmolLM_gec_project" was removed on 2026-01-08 to free up storage.
+# To recreate: conda env create -f environment.yml (or environment_20260108.yml for full)
+
 name: SmolLM_gec_project
 channels:
   - defaults
