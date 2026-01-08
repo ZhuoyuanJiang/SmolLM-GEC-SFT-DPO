@@ -6,6 +6,27 @@ This project implements **style-preserving grammatical error correction** using 
 
 **Key Achievement**: ~0.50 BLEU score with only 135M parameters, trained on 22+ SFT experiments and 6 DPO/IPO experiments using ~19,000 preference pairs that teach the model to prefer minimal edits over rewrites.
 
+## Model & Checkpoints
+
+| Resource | Link | Description |
+|----------|------|-------------|
+| **Best Model** | [HuggingFace](https://huggingface.co/DanJZY/SmolLM-135M-GEC-SFT-DPO) | Ready-to-use model (518MB) |
+| **Full Checkpoints** | [Google Drive](https://drive.google.com/drive/folders/1fxd_yi4r4crp7UK3tJVKxVPHo9gRcw4z) | All 28 experiments (~68GB) |
+
+### Quick Usage
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("DanJZY/SmolLM-135M-GEC-SFT-DPO")
+tokenizer = AutoTokenizer.from_pretrained("DanJZY/SmolLM-135M-GEC-SFT-DPO")
+
+# Example: Fix grammar while preserving style
+text = "As the number of people grows, the need of habitable environment is essential."
+inputs = tokenizer(f"Fix grammar: {text}", return_tensors="pt")
+outputs = model.generate(**inputs, max_new_tokens=100)
+print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+```
+
 ## Motivation
 
 I needed a grammar correction tool that would fix my mistakes without changing how I write. Previous large language models (GPT, Claude, etc.) tend to rewrite sentences entirely, making text sound generic and "AI-generated." This is problematic for professionals who need grammatical accuracy while maintaining their unique voice - lawyers drafting legal documents with precise terminology, academics preserving scholarly tone, or anyone wanting authentic writing that doesn't trigger AI detection. The solution: train a small, efficient model that learns to make minimal corrections through preference learning, understanding something like "using → use" is better than rewriting the entire sentence.
